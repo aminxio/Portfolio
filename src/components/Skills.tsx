@@ -1,43 +1,60 @@
 import React from 'react';
-import { Shield, Code, Globe, Network, Brain } from 'lucide-react';
-import SkillCard from './SkillCard';
+import { Shield, Lock, Code, Search, Server, Database } from 'lucide-react';
 
-const skillCategories = [
+const skills = [
   {
-    title: 'Penetration Testing Tools',
     icon: Shield,
-    skills: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Wireshark', 'Nmap', 'Nessus'],
+    title: 'Penetration Testing',
+    description: 'Web application security testing, network penetration testing, and vulnerability assessment.',
   },
   {
-    title: 'Programming & Scripting',
+    icon: Search,
+    title: 'Bug Hunting',
+    description: 'Active participation in bug bounty programs with proven track record of finding critical vulnerabilities.',
+  },
+  {
     icon: Code,
-    skills: ['Python', 'Bash', 'Golang', 'PowerShell'],
+    title: 'Security Tools',
+    description: 'Proficient with Burp Suite, Metasploit, Nmap, Wireshark, and custom script development.',
   },
   {
-    title: 'Web Security',
-    icon: Globe,
-    skills: ['OWASP Top 10', 'Web Application Security', 'Vulnerability Assessment'],
-  },
-  {
+    icon: Server,
     title: 'Network Security',
-    icon: Network,
-    skills: ['TCP/IP', 'Network Protocols', 'Firewall Evasion'],
+    description: 'Deep understanding of network protocols, firewall configurations, and security architecture.',
   },
   {
-    title: 'Soft Skills',
-    icon: Brain,
-    skills: ['Problem-solving', 'Critical Thinking', 'Attention to Detail', 'Communication'],
+    icon: Lock,
+    title: 'Web Security',
+    description: 'Expert in OWASP Top 10, XSS, CSRF, SQL injection, and security best practices.',
+  },
+  {
+    icon: Database,
+    title: 'Secure Development',
+    description: 'Experience with secure coding practices and code review for vulnerability detection.',
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-gray-800">
+    <section id="skills" className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">Skills & Expertise</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category) => (
-            <SkillCard key={category.title} {...category} />
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Technical Arsenal</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Equipped with cutting-edge tools and methodologies to identify, exploit, and secure vulnerabilities
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-lg bg-gray-900 border border-gray-800 hover:border-green-500 transition-colors group"
+            >
+              <skill.icon className="w-8 h-8 text-green-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">{skill.title}</h3>
+              <p className="text-gray-400">{skill.description}</p>
+            </div>
           ))}
         </div>
       </div>

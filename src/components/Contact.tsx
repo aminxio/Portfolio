@@ -1,66 +1,87 @@
-import React, { useState } from 'react';
-import { Send } from 'lucide-react';
+import React from 'react';
+import { Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
+import { personalInfo } from '../data/personalInfo';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-  };
-
   return (
-    <section id="contact" className="py-20 bg-gray-800">
+    <section id="contact" className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">Get in Touch</h2>
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-white mb-2">Name</label>
-              <input
-                type="text"
-                id="name"
-                className="w-full bg-gray-900 text-white rounded-lg p-3 focus:ring-2 focus:ring-green-400"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-              />
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
+            <p className="text-gray-400">
+              Interested in collaboration or have a security concern? Let's connect!
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white">Connect With Me</h3>
+              <div className="space-y-4">
+                <a
+                  href={`https://${personalInfo.linkedin}`}
+                  className="flex items-center space-x-3 text-gray-400 hover:text-green-500 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <span>{personalInfo.linkedin}</span>
+                </a>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center space-x-3 text-gray-400 hover:text-green-500 transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>{personalInfo.email}</span>
+                </a>
+                <div className="flex items-center space-x-3 text-gray-400">
+                  <Phone className="w-5 h-5" />
+                  <span>{personalInfo.phone}</span>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-400">
+                  <MapPin className="w-5 h-5" />
+                  <span>{personalInfo.location}</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-white mb-2">Email</label>
-              <input
-                type="email"
-                id="email"
-                className="w-full bg-gray-900 text-white rounded-lg p-3 focus:ring-2 focus:ring-green-400"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-white mb-2">Message</label>
-              <textarea
-                id="message"
-                rows={5}
-                className="w-full bg-gray-900 text-white rounded-lg p-3 focus:ring-2 focus:ring-green-400"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-colors"
-            >
-              <Send className="w-5 h-5 mr-2" />
-              Send Message
-            </button>
-          </form>
+
+            <form className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:border-green-500 text-white"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:border-green-500 text-white"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="w-full px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:border-green-500 text-white"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-green-500 hover:bg-green-600 text-black font-medium py-2 px-4 rounded-lg transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
