@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <Terminal className="w-6 h-6 text-green-500" />
-            <span className="text-white font-mono font-bold">SecurityPro</span>
+            <span className="text-white font-mono font-bold">Moaaz Awad</span>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
