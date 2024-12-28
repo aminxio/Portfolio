@@ -1,5 +1,4 @@
-import React from 'react';
-import { Terminal, Shield, Bug, Menu, X } from 'lucide-react';
+import { Terminal, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Header() {

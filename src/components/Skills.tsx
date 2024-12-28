@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Lock, Code, Search, Server, Database } from 'lucide-react';
 
 const skills = [

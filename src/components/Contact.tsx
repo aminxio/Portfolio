@@ -1,4 +1,3 @@
-import React from 'react';
 import { Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
 import { personalInfo } from '../data/personalInfo';
 

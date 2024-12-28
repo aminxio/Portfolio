@@ -1,4 +1,3 @@
-import React from 'react';
 import { Terminal, Bug } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 import { personalInfo } from '../data/personalInfo';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Award, CheckCircle } from 'lucide-react';
 
 const certifications = [
