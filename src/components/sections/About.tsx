@@ -66,7 +66,7 @@ export default function About() {
                 Arabic (Native)
               </p>
               <p className={theme === 'dark' ? 'text-gray-300' : 'text-navy-700'}>
-                English (B2)
+                English
               </p>
             </div>
           </div>
