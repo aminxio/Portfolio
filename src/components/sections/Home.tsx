@@ -1,13 +1,13 @@
 import { Shield, Brain } from 'lucide-react';
 import TypeWriter from '../ui/TypeWriter';
-import GradientButton from '../ui/GradientButton';
+import ActionButton from '../ui/ActionButton';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function Home() {
   const { theme } = useTheme();
   
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <div className="flex space-x-4">
@@ -36,8 +36,9 @@ export default function Home() {
           </p>
 
           <div className="flex space-x-4">
-            <GradientButton href="#projects" variant="cyan">View Projects</GradientButton>
-            <GradientButton href="#contact" variant="purple">Get in Touch</GradientButton>
+            <ActionButton href="#projects" variant="cyan">View Projects</ActionButton>
+            <ActionButton href="#contact" variant="purple">Get in Touch</ActionButton>
+            <ActionButton href="/cv.pdf" variant="green" download>Download CV</ActionButton>
           </div>
         </div>
 
@@ -59,6 +60,30 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <a 
+        href="#home" 
+        className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-all duration-300 ${
+          theme === 'dark' 
+            ? 'bg-gray-800 text-cyan-400 hover:bg-gray-700' 
+            : 'bg-white text-navy-600 hover:bg-gray-50'
+        }`}
+        aria-label="Back to top"
+      >
+        <svg 
+          className="w-6 h-6" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M5 10l7-7m0 0l7 7m-7-7v18" 
+          />
+        </svg>
+      </a>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare } from 'lucide-react';
+import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award } from 'lucide-react';
 import ThemeToggle from './ui/ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
 
@@ -25,14 +25,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <a href="/" className="flex items-center space-x-2 text-cyan-600 dark:text-cyan-400">
+          <a href="#home" className="flex items-center space-x-2 text-cyan-600 dark:text-cyan-400">
             <Terminal className="w-6 h-6" />
             <span className="font-bold">AmazingMoaaz</span>
           </a>
 
           <div className="hidden md:flex items-center space-x-4">
+            <NavLink href="#home"><Home className="w-4 h-4 inline mr-1" /> Home</NavLink>
             <NavLink href="#about"><User className="w-4 h-4 inline mr-1" /> About</NavLink>
-            <NavLink href="#skills"><Shield className="w-4 h-4 inline mr-1" /> Skills & Expertise</NavLink>
+            <NavLink href="#skills"><Shield className="w-4 h-4 inline mr-1" /> Skills</NavLink>
+            <NavLink href="#certifications"><Award className="w-4 h-4 inline mr-1" /> Certifications</NavLink>
             <NavLink href="#projects"><Briefcase className="w-4 h-4 inline mr-1" /> Projects</NavLink>
             <NavLink href="#contact"><MessageSquare className="w-4 h-4 inline mr-1" /> Contact</NavLink>
             <ThemeToggle />
@@ -48,15 +50,21 @@ export default function Navbar() {
 
         <div
           className={`md:hidden transition-all duration-300 ease-in-out ${
-            isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+            isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
           } overflow-hidden`}
         >
           <div className="py-2 space-y-1">
+            <a href="#home" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              <Home className="w-4 h-4 inline mr-2" /> Home
+            </a>
             <a href="#about" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               <User className="w-4 h-4 inline mr-2" /> About
             </a>
             <a href="#skills" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-              <Shield className="w-4 h-4 inline mr-2" /> Skills & Expertise
+              <Shield className="w-4 h-4 inline mr-2" /> Skills
+            </a>
+            <a href="#certifications" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              <Award className="w-4 h-4 inline mr-2" /> Certifications
             </a>
             <a href="#projects" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               <Briefcase className="w-4 h-4 inline mr-2" /> Projects
