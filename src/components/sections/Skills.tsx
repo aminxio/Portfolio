@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Shield, Code, Cloud } from 'lucide-react';
 import { skillCategories } from '../../data/skills';
 import SkillCard from '../ui/SkillCard';

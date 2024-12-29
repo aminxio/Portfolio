@@ -1,11 +1,10 @@
-import React from 'react';
 import ContactForm from '../ui/ContactForm';
 import SocialLinks from '../ui/SocialLinks';
 import { Mail, MapPin } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function Contact() {
-  const { theme } = useTheme();
+  const {} = useTheme();
 
   return (
     <section id="contact" className="py-20 px-4">

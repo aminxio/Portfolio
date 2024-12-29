@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectCard from '../ui/ProjectCard';
 import { projects } from '../../data/projects';
 import { useTheme } from '../../context/ThemeContext';

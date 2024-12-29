@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Brain } from 'lucide-react';
 import TypeWriter from '../ui/TypeWriter';
 import GradientButton from '../ui/GradientButton';
