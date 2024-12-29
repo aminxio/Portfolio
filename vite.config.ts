@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+    include: ['@emotion/react', '@emotion/styled'],},
   server: {
     host: true,  // Expose the server to the local network
     port: 5173,  // Optional: Specify a port (default is 5173)
