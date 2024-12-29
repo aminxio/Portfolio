@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SkillBarProps {
   name: string;
   level: number;

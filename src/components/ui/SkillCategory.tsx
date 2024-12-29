@@ -1,4 +1,3 @@
-import React from 'react';
 import SkillBar from './SkillBar';
 import { Skill } from '../../types/skills';
 
