@@ -63,10 +63,10 @@ export default function About() {
                 Languages
               </h3>
               <p className={theme === 'dark' ? 'text-gray-300' : 'text-navy-700'}>
-                Arabic (Native)
+                Arabic
               </p>
               <p className={theme === 'dark' ? 'text-gray-300' : 'text-navy-700'}>
-                English (B2)
+                English
               </p>
             </div>
           </div>
