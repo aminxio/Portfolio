@@ -1,18 +1,48 @@
-export const skills = [
+import { SkillCategory } from '../types/skills';
+
+export const skillCategories: SkillCategory[] = [
   {
-    category: 'Penetration Testing Tools',
-    items: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Wireshark', 'Nmap', 'Nessus']
+    title: 'Penetration Testing',
+    icon: 'Shield',
+    color: 'cyan',
+    skills: [
+      { name: 'Web Application Testing', description: 'Burp Suite, OWASP ZAP' },
+      { name: 'Network Testing', description: 'Nmap, Wireshark' },
+      { name: 'Vulnerability Assessment', description: 'Nessus, OpenVAS' },
+      { name: 'Exploitation', description: 'Metasploit, Empire' },
+    ]
   },
   {
-    category: 'Programming & Scripting',
-    items: ['Python', 'Bash', 'Golang', 'PowerShell']
+    title: 'Programming',
+    icon: 'Code',
+    color: 'purple',
+    skills: [
+      { name: 'Python', description: 'Django, Flask, Automation' },
+      { name: 'Golang', description: 'Web Services, CLI Tools' },
+      { name: 'Bash Scripting', description: 'Automation, System Admin' },
+      { name: 'PowerShell', description: 'Windows Automation' },
+    ]
   },
   {
-    category: 'Web Application Security',
-    items: ['OWASP Top 10', 'Web Exploitation', 'Security Assessment']
+    title: 'Security Tools',
+    icon: 'Shield',
+    color: 'green',
+    skills: [
+      { name: 'Kali Linux', description: 'Primary Testing Environment' },
+      { name: 'Forensics Tools', description: 'Autopsy, Volatility' },
+      { name: 'SIEM', description: 'Splunk, ELK Stack' },
+      { name: 'IDS/IPS', description: 'Snort, Suricata' },
+    ]
   },
   {
-    category: 'Network Security',
-    items: ['TCP/IP', 'Network Protocols', 'Firewall Evasion']
+    title: 'Cloud Security',
+    icon: 'Cloud',
+    color: 'blue',
+    skills: [
+      { name: 'AWS Security', description: 'IAM, Security Groups' },
+      { name: 'Docker Security', description: 'Container Hardening' },
+      { name: 'CI/CD Security', description: 'Pipeline Security' },
+      { name: 'Cloud Pentesting', description: 'Cloud Infrastructure Testing' },
+    ]
   }
 ];
