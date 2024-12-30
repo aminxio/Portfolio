@@ -1,30 +1,30 @@
-import { Linkedin, Github, Twitter, MessageCircle } from 'lucide-react';
+import { FaLinkedin, FaGithub, FaTwitter, FaDiscord } from 'react-icons/fa';
 
 const socialLinks = [
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/in/gewili-moaaz',
-    icon: Linkedin,
-    color: 'text-blue-400'
+    icon: FaLinkedin,
+    color: 'text-blue-400',
   },
   {
     name: 'GitHub',
     url: 'https://github.com/AmazingMoaaz',
-    icon: Github,
-    color: 'text-purple-400'
+    icon: FaGithub,
+    color: 'text-purple-400',
   },
   {
     name: 'Discord',
     url: 'https://discord.com/users/amazing_moaaz',
-    icon: MessageCircle,
-    color: 'text-indigo-400'
+    icon: FaDiscord,
+    color: 'text-indigo-400',
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/yourusername',
-    icon: Twitter,
-    color: 'text-cyan-400'
-  }
+    url: 'https://x.com/M_0_A_Z',
+    icon: FaTwitter,
+    color: 'text-cyan-400',
+  },
 ];
 
 export default function SocialLinks() {
@@ -39,7 +39,7 @@ export default function SocialLinks() {
           className={`${color} hover:scale-110 transition-transform`}
           aria-label={name}
         >
-          <Icon className="w-6 h-6" />
+          <Icon className="w-8 h-8" />
         </a>
       ))}
     </div>
