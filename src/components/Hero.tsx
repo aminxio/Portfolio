@@ -12,36 +12,35 @@ export default function Hero() {
     let timeoutId: NodeJS.Timeout;
 
     const type = () => {
-      const current = words[currentWord];
       if (!textRef.current) return;
 
+      const current = words[currentWord];
+
+      // Handle typing and deleting logic
       if (isDeleting) {
-        textRef.current.textContent = current.substring(0, currentChar - 1);
         currentChar--;
+        textRef.current.textContent = current.substring(0, currentChar);
       } else {
-        textRef.current.textContent = current.substring(0, currentChar + 1);
         currentChar++;
+        textRef.current.textContent = current.substring(0, currentChar);
       }
 
+      // Transition to deleting or next word
       if (!isDeleting && currentChar === current.length) {
         isDeleting = true;
-        timeoutId = setTimeout(type, 2000); // Pause after fully typing the word
-        return;
-      }
-
-      if (isDeleting && currentChar === 0) {
+        timeoutId = setTimeout(type, 2000); // Pause after typing
+      } else if (isDeleting && currentChar === 0) {
         isDeleting = false;
-        currentWord = (currentWord + 1) % words.length; // Switch to the next word
-        timeoutId = setTimeout(type, 500); // Pause before typing the next word
-        return;
+        currentWord = (currentWord + 1) % words.length; // Move to next word
+        timeoutId = setTimeout(type, 500); // Pause before typing next word
+      } else {
+        timeoutId = setTimeout(type, isDeleting ? 50 : 100); // Typing speed
       }
-
-      timeoutId = setTimeout(type, isDeleting ? 50 : 100);
     };
 
     type();
-    return () => clearTimeout(timeoutId);
-  }, [words]);
+    return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
