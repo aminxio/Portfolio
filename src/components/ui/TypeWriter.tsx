@@ -2,22 +2,25 @@ import { useEffect, useRef } from 'react';
 
 interface TypeWriterProps {
   words: string[];
-  delay?: number;
+  delay?: number; // delay between typing words
 }
 
 export default function TypeWriter({ words, delay = 2000 }: TypeWriterProps) {
-  const textRef = useRef<HTMLSpanElement>(null);
-  
+  const textRef = useRef<HTMLSpanElement>(null); // Reference to span element to update text
+  const timeoutId = useRef<NodeJS.Timeout | null>(null); // Store the timeout ID
+
   useEffect(() => {
     let currentWord = 0;
     let currentChar = 0;
     let isDeleting = false;
-    let timeoutId: NodeJS.Timeout;
 
     const type = () => {
       const current = words[currentWord];
+
+      // Ensure textRef is available before manipulating the DOM
       if (!textRef.current) return;
 
+      // Typing and Deleting logic
       if (isDeleting) {
         textRef.current.textContent = current.substring(0, currentChar - 1);
         currentChar--;
@@ -26,25 +29,34 @@ export default function TypeWriter({ words, delay = 2000 }: TypeWriterProps) {
         currentChar++;
       }
 
+      // After typing the word, pause before deleting it
       if (!isDeleting && currentChar === current.length) {
         isDeleting = true;
-        timeoutId = setTimeout(type, delay);
+        timeoutId.current = setTimeout(type, delay); // Wait before starting to delete
         return;
       }
 
+      // After deleting the word, move to the next word
       if (isDeleting && currentChar === 0) {
         isDeleting = false;
-        currentWord = (currentWord + 1) % words.length;
-        timeoutId = setTimeout(type, 500);
+        currentWord = (currentWord + 1) % words.length; // Loop through the words array
+        timeoutId.current = setTimeout(type, 500); // Pause before typing the next word
         return;
       }
 
-      timeoutId = setTimeout(type, isDeleting ? 50 : 100);
+      // Control typing speed: slower for typing, faster for deleting
+      timeoutId.current = setTimeout(type, isDeleting ? 50 : 100);
     };
 
-    type();
-    return () => clearTimeout(timeoutId);
-  }, [words, delay]);
+    type(); // Start the typewriter effect
+
+    // Cleanup timeout when component unmounts
+    return () => {
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current); // Prevent memory leaks
+      }
+    };
+  }, [words, delay]); // Dependencies: words array and delay
 
   return (
     <>
