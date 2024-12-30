@@ -9,13 +9,13 @@ const socialLinks = [
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/yourusername',
+    url: 'https://github.com/AmazingMoaaz',
     icon: Github,
     color: 'text-purple-400'
   },
   {
     name: 'Discord',
-    url: 'https://discord.com/users/yourusername',
+    url: 'https://discord.com/users/amazing_moaaz',
     icon: MessageCircle,
     color: 'text-indigo-400'
   },
