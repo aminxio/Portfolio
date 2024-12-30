@@ -16,26 +16,32 @@ export default function Hero() {
 
       const current = words[currentWord];
 
-      // Handle typing and deleting logic
+      // Typing or deleting characters
       if (isDeleting) {
         currentChar--;
-        textRef.current.textContent = current.substring(0, currentChar);
       } else {
         currentChar++;
-        textRef.current.textContent = current.substring(0, currentChar);
       }
 
-      // Transition to deleting or next word
+      textRef.current.textContent = current.substring(0, currentChar);
+
+      // When word is fully typed
       if (!isDeleting && currentChar === current.length) {
         isDeleting = true;
-        timeoutId = setTimeout(type, 2000); // Pause after typing
-      } else if (isDeleting && currentChar === 0) {
-        isDeleting = false;
-        currentWord = (currentWord + 1) % words.length; // Move to next word
-        timeoutId = setTimeout(type, 500); // Pause before typing next word
-      } else {
-        timeoutId = setTimeout(type, isDeleting ? 50 : 100); // Typing speed
+        timeoutId = setTimeout(type, 2000); // Pause after full word
+        return;
       }
+
+      // When word is fully deleted
+      if (isDeleting && currentChar === 0) {
+        isDeleting = false;
+        currentWord = (currentWord + 1) % words.length; // Move to the next word
+        timeoutId = setTimeout(type, 500); // Pause before typing next word
+        return;
+      }
+
+      // Typing and deleting speed
+      timeoutId = setTimeout(type, isDeleting ? 50 : 100);
     };
 
     type();
