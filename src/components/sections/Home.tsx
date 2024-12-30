@@ -36,7 +36,6 @@ export default function Home() {
           </p>
 
           <div className="flex space-x-4">
-            <ActionButton href="#projects" variant="cyan">View Projects</ActionButton>
             <ActionButton href="#contact" variant="purple">Get in Touch</ActionButton>
             <ActionButton href="/cv.pdf" variant="green" download>Download CV</ActionButton>
           </div>

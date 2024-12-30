@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub, FaTwitter, FaDiscord } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter, FaDiscord,FaFacebook } from 'react-icons/fa';
 
 const socialLinks = [
   {
@@ -17,6 +17,12 @@ const socialLinks = [
     name: 'Discord',
     url: 'https://discord.com/users/amazing_moaaz',
     icon: FaDiscord,
+    color: 'text-indigo-400',
+  },
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/Amazing.Moaaz',
+    icon: FaFacebook,
     color: 'text-indigo-400',
   },
   {

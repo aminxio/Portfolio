@@ -68,11 +68,11 @@ export default function Hero() {
 
         <div className="flex justify-center space-x-4 mt-8">
           <a
-            href="#projects"
-            className="px-6 py-3 bg-cyan-900/20 border border-cyan-400/20 text-cyan-400 rounded-lg hover:bg-cyan-900/40 transition-all duration-300 group"
+            href="/cv.pdf"
+            download
+            className="px-6 py-3 bg-green-900/20 border border-green-400/20 text-green-400 rounded-lg hover:bg-green-900/40 transition-all duration-300"
           >
-            View Projects
-            <div className="w-full h-0.5 bg-cyan-400/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            Download CV
           </a>
           <a
             href="#contact"
