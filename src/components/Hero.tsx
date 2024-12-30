@@ -3,8 +3,8 @@ import { Shield, Brain, Terminal } from 'lucide-react';
 
 export default function Hero() {
   const textRef = useRef<HTMLSpanElement>(null);
-  const words = [ "Penetration Tester.", "AI Specialist.", "Bug Hunter." ];
-  
+  const words = ["Penetration Tester.", "AI Specialist.", "Bug Hunter."];
+
   useEffect(() => {
     let currentWord = 0;
     let currentChar = 0;
@@ -25,14 +25,14 @@ export default function Hero() {
 
       if (!isDeleting && currentChar === current.length) {
         isDeleting = true;
-        timeoutId = setTimeout(type, 2000);
+        timeoutId = setTimeout(type, 2000); // Pause after fully typing the word
         return;
       }
 
       if (isDeleting && currentChar === 0) {
         isDeleting = false;
-        currentWord = (currentWord + 1) % words.length;
-        timeoutId = setTimeout(type, 500);
+        currentWord = (currentWord + 1) % words.length; // Switch to the next word
+        timeoutId = setTimeout(type, 500); // Pause before typing the next word
         return;
       }
 
@@ -41,7 +41,7 @@ export default function Hero() {
 
     type();
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [words]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
@@ -51,11 +51,11 @@ export default function Hero() {
           <Brain className="w-8 h-8 text-purple-400 animate-pulse delay-75" />
           <Terminal className="w-8 h-8 text-green-400 animate-pulse delay-150" />
         </div>
-        
+
         <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 text-transparent bg-clip-text">
           Securing Tomorrow's Digital Landscape
         </h1>
-        
+
         <div className="text-xl md:text-2xl text-gray-400 mb-8">
           I'm a <span ref={textRef} className="text-cyan-400"></span>
           <span className="animate-blink">|</span>
