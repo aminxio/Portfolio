@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award } from 'lucide-react';
+import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag } from 'lucide-react';
 import ThemeToggle from './ui/ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
 
@@ -36,6 +36,7 @@ export default function Navbar() {
             <NavLink href="#skills"><Shield className="w-4 h-4 inline mr-1" /> Skills</NavLink>
             <NavLink href="#certifications"><Award className="w-4 h-4 inline mr-1" /> Certifications</NavLink>
             <NavLink href="#projects"><Briefcase className="w-4 h-4 inline mr-1" /> Projects</NavLink>
+            <NavLink href="#ctf"><Flag className="w-4 h-4 inline mr-1" /> CTF</NavLink>
             <NavLink href="#contact"><MessageSquare className="w-4 h-4 inline mr-1" /> Contact</NavLink>
             <ThemeToggle />
           </div>
@@ -68,6 +69,9 @@ export default function Navbar() {
             </a>
             <a href="#projects" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               <Briefcase className="w-4 h-4 inline mr-2" /> Projects
+            </a>
+            <a href="#ctf" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              <Flag className="w-4 h-4 inline mr-2" /> CTF
             </a>
             <a href="#contact" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-cyan-900/20 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               <MessageSquare className="w-4 h-4 inline mr-2" /> Contact
