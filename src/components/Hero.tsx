@@ -3,7 +3,7 @@ import { Shield, Brain, Terminal } from 'lucide-react';
 
 export default function Hero() {
   const textRef = useRef<HTMLSpanElement>(null);
-  const words = ["Penetration Tester.", "AI Specialist.", "Security Researcher."];
+  const words = [ "Penetration Tester.", "AI Specialist.", "Bug Hunter." ];
   
   useEffect(() => {
     let currentWord = 0;
