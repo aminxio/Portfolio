@@ -47,7 +47,7 @@ A cutting-edge portfolio website showcasing cybersecurity expertise, built with 
 
 1. **Clone & Install**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/AmazingMoaaz/Portfolio.git
    cd portfolio
    npm install
    ```
