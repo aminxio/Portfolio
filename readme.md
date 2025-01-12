@@ -135,7 +135,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Built with ❤️ using React, TypeScript, and Tailwind CSS</p>
+  <p>Built with ❤️ By @AmazingMoaaz using React, TypeScript, and Tailwind CSS</p>
   <p>
     <a href="https://react.dev">
       <img src="https://img.shields.io/badge/React-Learn_More-blue?style=flat-square&logo=react" alt="React" />
