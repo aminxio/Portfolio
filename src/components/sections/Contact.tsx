@@ -22,14 +22,14 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
                   <Mail className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  <a href="mailto:Moaz_Awad@outlook.com" 
+                  <a href="mailto:contact@amazingmoaaz.online" 
                     className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-                    Moaz_Awad@outlook.com
+                    contact@amazingmoaaz.online
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
                   <MapPin className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  <span>Talkha, Dakahlia</span>
+                  <span>Talkha, Ad Daqahliyah, Egypt</span>
                 </div>
               </div>
             </div>

@@ -95,23 +95,30 @@ export default function ContactForm() {
       setErrors(formErrors);
       return;
     }
+
+    const apiKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!apiKey) {
+      console.error('Web3Forms API key is not configured');
+      setStatus('error');
+      return;
+    }
     
     setStatus('sending');
 
     try {
-      const sanitizedData = sanitizeFormData(formData);
+      const payload = {
+        access_key: apiKey,
+        ...sanitizeFormData(formData),
+      };
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          access_key: process.env.VITE_WEB3FORMS_KEY,
-          ...sanitizedData,
-        }),
+        body: JSON.stringify(payload),
       });
-
+      
       if (!response.ok) throw new Error('Failed to send message');
 
       setStatus('success');

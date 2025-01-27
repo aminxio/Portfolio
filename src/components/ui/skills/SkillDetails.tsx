@@ -15,7 +15,9 @@ export default function SkillDetails({ category, isAnimating }: SkillDetailsProp
   const Icon = icons[category.icon as keyof typeof icons];
 
   return (
-    <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+    <div className={`transition-all duration-300 ${
+      isAnimating ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'
+    }`}>
       <div className="flex items-center space-x-4 mb-8">
         <Icon className={`w-8 h-8 ${
           theme === 'dark' ? 'text-cyan-400' : 'text-navy-600'

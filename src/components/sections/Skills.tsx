@@ -40,10 +40,16 @@ export default function Skills() {
           ))}
         </div>
 
-        <SkillDetails
-          category={skillCategories[activeCategory]}
-          isAnimating={isAnimating}
-        />
+        <div className="relative">
+          <div className={`transition-opacity duration-300 ${
+            isAnimating ? 'opacity-0' : 'opacity-100'
+          }`}>
+            <SkillDetails
+              category={skillCategories[activeCategory]}
+              isAnimating={isAnimating}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

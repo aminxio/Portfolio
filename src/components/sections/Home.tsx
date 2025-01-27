@@ -46,12 +46,15 @@ export default function Home() {
             Let's work together to protect your systems and build a safer digital future.
           </p>
 
+          <p className={`text-lg leading-relaxed text-red-500 ${theme === 'dark' ? 'text-red-500' : 'text-red-500'}`}>
+          THIS SITE IS UNDER DEVELOPMENT. SOME DATA IS JUST A MOCKUP.
+          </p>
+
           <div className="flex space-x-4">
             <ActionButton 
               href="#contact" 
               variant="purple" 
               aria-label="Contact me"
-              className="group transform hover:scale-105 transition-all"
             >
               Let's Collaborate
             </ActionButton>
@@ -60,7 +63,6 @@ export default function Home() {
               variant="green" 
               download 
               aria-label="Download CV"
-              className="group transform hover:scale-105 transition-all"
             >
               View My Resume
             </ActionButton>
