@@ -9,13 +9,14 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
+    allowedHosts: ['amazingmoaaz.online'],  // Add this line to allow the specific domain
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-      'Content-Security-Policy': "default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://api.web3forms.com;"
-    }
+      'Content-Security-Policy': "default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://api.web3forms.com;",
+    },
   },
 });
