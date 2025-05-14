@@ -33,15 +33,17 @@ export default function FormInput({
 
   const inputClasses = `w-full rounded-lg px-4 py-2 transition-all duration-300
     ${theme === 'dark'
-      ? 'bg-gray-800/50 border border-gray-700 text-gray-300 focus:border-cyan-400'
-      : 'bg-white border border-navy-200 text-navy-900 focus:border-navy-500'
+      ? 'bg-black-800/50 border border-black-600 text-silver-300 focus:border-accent-blue'
+      : 'bg-black-700 border border-black-500 text-silver-400 focus:border-accent-blue'
     } focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
-      theme === 'dark' ? 'focus:ring-cyan-400/20' : 'focus:ring-navy-500/20'
-    } ${error && touched ? 'border-red-500 dark:border-red-400' : ''}`;
+      theme === 'dark' ? 'focus:ring-accent-blue/20' : 'focus:ring-accent-blue/20'
+    } ${error && touched ? 'border-red-600 dark:border-red-500' : ''}`;
 
   return (
     <div>
-      <label htmlFor={id} className="block text-navy-700 dark:text-gray-300 mb-2">
+      <label htmlFor={id} className={`block mb-2 ${
+        theme === 'dark' ? 'text-silver-300' : 'text-silver-400'
+      }`}>
         {label}
       </label>
       <input
@@ -57,7 +59,7 @@ export default function FormInput({
         disabled={disabled}
       />
       {error && touched && (
-        <p className="mt-1 text-sm text-red-500 dark:text-red-400">{error}</p>
+        <p className="mt-1 text-sm text-red-600 dark:text-red-500">{error}</p>
       )}
     </div>
   );

@@ -87,8 +87,8 @@ export default function ParticleBackground() {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = theme === 'dark' 
-          ? `rgba(6, 182, 212, ${particle.opacity})` 
-          : `rgba(14, 165, 233, ${particle.opacity})`;
+          ? `rgba(239, 68, 68, ${particle.opacity})` 
+          : `rgba(248, 113, 113, ${particle.opacity})`;
         ctx.fill();
 
         particles.forEach((p2, j) => {
@@ -100,8 +100,8 @@ export default function ParticleBackground() {
           if (distance < 100) {
             ctx.beginPath();
             ctx.strokeStyle = theme === 'dark'
-              ? `rgba(6, 182, 212, ${0.1 * (1 - distance / 100) * particle.opacity})`
-              : `rgba(14, 165, 233, ${0.1 * (1 - distance / 100) * particle.opacity})`;
+              ? `rgba(239, 68, 68, ${0.1 * (1 - distance / 100) * particle.opacity})`
+              : `rgba(248, 113, 113, ${0.1 * (1 - distance / 100) * particle.opacity})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(p2.x, p2.y);
@@ -137,8 +137,8 @@ export default function ParticleBackground() {
       className="fixed inset-0 w-full h-full pointer-events-none"
       style={{ 
         background: theme === 'dark' 
-          ? 'linear-gradient(to bottom, #111827, #0f172a)'
-          : 'linear-gradient(to bottom, #f8fafc, #f1f5f9)'
+          ? 'linear-gradient(to bottom, #000000, #0a0a0a)'
+          : 'linear-gradient(to bottom, #171717, #262626)'
       }}
     />
   );

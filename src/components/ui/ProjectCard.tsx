@@ -16,8 +16,8 @@ export default function ProjectCard({ title, description, image, tags, demoUrl, 
   return (
     <div className={`rounded-lg overflow-hidden border transition-all duration-300 group ${
       theme === 'dark'
-        ? 'bg-gray-800/50 border-gray-700 hover:border-cyan-400/50'
-        : 'bg-white border-navy-100 hover:border-navy-300 shadow-sm'
+        ? 'bg-black-800/50 border-black-600 hover:border-gold-400/50'
+        : 'bg-black-700 border-black-500 hover:border-gold-500/50 shadow-sm'
     }`}>
       <div className="relative h-48 overflow-hidden">
         <img
@@ -25,17 +25,17 @@ export default function ProjectCard({ title, description, image, tags, demoUrl, 
           alt={title}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-800 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black-900 to-transparent opacity-60" />
       </div>
       
       <div className="p-6 space-y-4">
         <h3 className={`text-xl font-semibold ${
-          theme === 'dark' ? 'text-gray-100' : 'text-navy-700'
+          theme === 'dark' ? 'text-gold-400' : 'text-gold-500'
         }`}>
           {title}
         </h3>
         <p className={
-          theme === 'dark' ? 'text-gray-400' : 'text-navy-600'
+          theme === 'dark' ? 'text-silver-400' : 'text-silver-300'
         }>
           {description}
         </p>
@@ -46,8 +46,8 @@ export default function ProjectCard({ title, description, image, tags, demoUrl, 
               key={tag}
               className={`px-2 py-1 text-xs rounded-full ${
                 theme === 'dark'
-                  ? 'bg-gray-700 text-gray-300'
-                  : 'bg-navy-50 text-navy-600 border border-navy-200'
+                  ? 'bg-black-700 text-gold-300 border border-gold-600/30'
+                  : 'bg-black-600 text-gold-300 border border-gold-500/30'
               }`}
             >
               {tag}
@@ -63,8 +63,8 @@ export default function ProjectCard({ title, description, image, tags, demoUrl, 
               rel="noopener noreferrer"
               className={`flex items-center space-x-1 ${
                 theme === 'dark'
-                  ? 'text-cyan-400 hover:text-cyan-300'
-                  : 'text-navy-500 hover:text-navy-600'
+                  ? 'text-gold-400 hover:text-gold-300'
+                  : 'text-gold-500 hover:text-gold-400'
               }`}
             >
               <ExternalLink size={16} />
@@ -78,8 +78,8 @@ export default function ProjectCard({ title, description, image, tags, demoUrl, 
               rel="noopener noreferrer"
               className={`flex items-center space-x-1 ${
                 theme === 'dark'
-                  ? 'text-purple-400 hover:text-purple-300'
-                  : 'text-navy-600 hover:text-navy-700'
+                  ? 'text-accent-purple hover:text-accent-purple/80'
+                  : 'text-accent-purple hover:text-accent-purple/90'
               }`}
             >
               <Github size={16} />

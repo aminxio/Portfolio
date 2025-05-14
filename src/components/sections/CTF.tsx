@@ -11,10 +11,12 @@ export default function CTF() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center space-x-4 mb-12">
           <Flag className={`w-8 h-8 ${
-            theme === 'dark' ? 'text-cyan-400' : 'text-navy-600'
+            theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple'
           }`} />
           <h2 className={`text-3xl font-bold ${
-            theme === 'dark' ? 'text-cyan-400' : 'text-navy-700'
+            theme === 'dark' 
+              ? 'bg-gradient-to-r from-accent-purple via-gold-400 to-accent-purple text-transparent bg-clip-text animate-gradient-x' 
+              : 'bg-gradient-to-r from-accent-purple via-gold-500 to-accent-purple text-transparent bg-clip-text animate-gradient-x'
           }`}>
             Latest CTF Challenges
           </h2>

@@ -9,8 +9,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={`min-h-screen font-mono transition-colors duration-300
       ${theme === 'dark' 
-        ? 'bg-gray-900 text-cyan-50' 
-        : 'bg-navy-50 text-navy-900'}`}
+        ? 'bg-black-900 text-red-500' 
+        : 'bg-black-800 text-red-400'}`}
     >
       <ParticleBackground />
       <Navbar />

@@ -24,11 +24,11 @@ export default function ContactForm() {
   const getInputClasses = (hasError: boolean = false) => `
     w-full rounded-lg px-4 py-2 transition-all duration-300
     ${theme === 'dark'
-      ? 'bg-gray-800/50 border border-gray-700 text-gray-300 focus:border-cyan-400'
-      : 'bg-white border border-navy-200 text-navy-900 focus:border-navy-500'
+      ? 'bg-black-800/50 border border-black-600 text-silver-300 focus:border-accent-blue'
+      : 'bg-black-700 border border-black-500 text-silver-400 focus:border-accent-blue'
     } focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
-      theme === 'dark' ? 'focus:ring-cyan-400/20' : 'focus:ring-navy-500/20'
-    } ${hasError ? 'border-red-500 dark:border-red-400' : ''}`;
+      theme === 'dark' ? 'focus:ring-accent-blue/20' : 'focus:ring-accent-blue/20'
+    } ${hasError ? 'border-red-600 dark:border-red-500' : ''}`;
 
   const getButtonClasses = () => {
     const baseClasses = 'w-full rounded-lg px-6 py-3 flex items-center justify-center space-x-2 transition-all duration-300';
@@ -36,14 +36,14 @@ export default function ContactForm() {
     if (status === 'sending') {
       return `${baseClasses} opacity-75 cursor-wait ${
         theme === 'dark'
-          ? 'bg-cyan-900/20 border border-cyan-400/20 text-cyan-400'
-          : 'bg-navy-50 border border-navy-200 text-navy-600'
+          ? 'bg-black-700/30 border border-accent-blue/30 text-accent-blue'
+          : 'bg-black-600 border border-accent-blue/40 text-accent-blue'
       }`;
     }
     return `${baseClasses} ${
       theme === 'dark'
-        ? 'bg-cyan-900/20 border border-cyan-400/20 text-cyan-400 hover:bg-cyan-900/40'
-        : 'bg-navy-50 border border-navy-200 text-navy-600 hover:bg-navy-100'
+        ? 'bg-black-700/30 border border-accent-blue/30 text-accent-blue hover:bg-black-700/50'
+        : 'bg-black-600 border border-accent-blue/40 text-accent-blue hover:bg-black-500'
     }`;
   };
 
@@ -59,14 +59,14 @@ export default function ContactForm() {
       case 'success':
         return (
           <>
-            <CheckCircle className="w-5 h-5" />
+            <CheckCircle className="w-5 h-5 text-accent-emerald" />
             <span>Message Sent!</span>
           </>
         );
       case 'error':
         return (
           <>
-            <AlertCircle className="w-5 h-5" />
+            <AlertCircle className="w-5 h-5 text-red-500" />
             <span>Failed to Send</span>
           </>
         );
@@ -189,7 +189,9 @@ export default function ContactForm() {
         disabled={status === 'sending'}
       />
       <div>
-        <label htmlFor="message" className="block text-navy-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className={`block mb-2 ${
+          theme === 'dark' ? 'text-silver-300' : 'text-silver-400'
+        }`}>
           Message
         </label>
         <textarea
@@ -205,9 +207,9 @@ export default function ContactForm() {
           disabled={status === 'sending'}
         />
         {errors.message && touched.message && (
-          <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message}</p>
+          <p className="mt-1 text-sm text-red-600 dark:text-red-500">{errors.message}</p>
         )}
-        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-1 text-sm text-silver-500">
           {formData.message.length}/1000 characters
         </div>
       </div>

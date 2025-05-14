@@ -20,11 +20,15 @@ export default function Skills() {
 
   return (
     <section id="skills" className={`py-20 px-4 ${
-      theme === 'dark' ? 'bg-gray-900/50' : 'bg-navy-50/50'
+      theme === 'dark' 
+        ? 'bg-gradient-to-b from-black-800/50 to-black-900/70' 
+        : 'bg-gradient-to-b from-black-700/50 to-black-800/70'
     }`}>
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-3xl font-bold mb-12 ${
-          theme === 'dark' ? 'text-cyan-400' : 'text-navy-700'
+          theme === 'dark' 
+            ? 'bg-gradient-to-r from-accent-blue via-gold-400 to-accent-purple text-transparent bg-clip-text animate-gradient-x' 
+            : 'bg-gradient-to-r from-accent-blue via-gold-500 to-accent-purple text-transparent bg-clip-text animate-gradient-x'
         }`}>
           Skills & Expertise
         </h2>
@@ -41,13 +45,19 @@ export default function Skills() {
         </div>
 
         <div className="relative">
-          <div className={`transition-opacity duration-300 ${
-            isAnimating ? 'opacity-0' : 'opacity-100'
+          <div className={`transition-all duration-300 ${
+            isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
           }`}>
-            <SkillDetails
-              category={skillCategories[activeCategory]}
-              isAnimating={isAnimating}
-            />
+            <div className={`p-6 rounded-lg ${
+              theme === 'dark' 
+                ? 'bg-black-800/70 border border-accent-blue/20' 
+                : 'bg-black-700/70 border border-accent-blue/20'
+            }`}>
+              <SkillDetails
+                category={skillCategories[activeCategory]}
+                isAnimating={isAnimating}
+              />
+            </div>
           </div>
         </div>
       </div>

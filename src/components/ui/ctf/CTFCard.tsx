@@ -11,24 +11,24 @@ export default function CTFCard({ challenge }: CTFCardProps) {
   
   const getDifficultyColor = (difficulty: string) => {
     const colors = {
-      Easy: 'text-green-400',
-      Medium: 'text-yellow-400',
-      Hard: 'text-red-400',
+      Easy: 'text-accent-emerald',
+      Medium: 'text-gold-400',
+      Hard: 'text-red-500',
     };
-    return colors[difficulty as keyof typeof colors] || 'text-gray-400';
+    return colors[difficulty as keyof typeof colors] || 'text-red-400';
   };
 
   return (
     <div className={`rounded-lg p-6 border transition-all duration-300 hover:scale-105 ${
       theme === 'dark'
-        ? 'bg-gray-800/50 border-gray-700 hover:border-cyan-400/50'
-        : 'bg-white border-navy-200 hover:border-navy-400 shadow-sm'
+        ? 'bg-black-800/50 border-black-600 hover:border-accent-purple/50'
+        : 'bg-black-700 border-black-500 hover:border-accent-purple/50 shadow-sm'
     }`}>
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3">
-          <Flag className={`w-5 h-5 ${theme === 'dark' ? 'text-cyan-400' : 'text-navy-600'}`} />
+          <Flag className={`w-5 h-5 ${theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple'}`} />
           <h3 className={`text-lg font-semibold ${
-            theme === 'dark' ? 'text-gray-200' : 'text-navy-800'
+            theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple'
           }`}>
             {challenge.name}
           </h3>
@@ -39,14 +39,14 @@ export default function CTFCard({ challenge }: CTFCardProps) {
       </div>
 
       <div className="mt-4 space-y-2">
-        <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-navy-600'}`}>
-          Platform: {challenge.platform}
+        <p className={`text-sm ${theme === 'dark' ? 'text-silver-400' : 'text-silver-300'}`}>
+          Platform: <span className="text-gold-400">{challenge.platform}</span>
         </p>
-        <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-navy-600'}`}>
-          Category: {challenge.category}
+        <p className={`text-sm ${theme === 'dark' ? 'text-silver-400' : 'text-silver-300'}`}>
+          Category: <span className="text-gold-400">{challenge.category}</span>
         </p>
-        <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-navy-600'}`}>
-          Points: {challenge.points}
+        <p className={`text-sm ${theme === 'dark' ? 'text-silver-400' : 'text-silver-300'}`}>
+          Points: <span className="text-accent-emerald">{challenge.points}</span>
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export default function CTFCard({ challenge }: CTFCardProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`mt-4 inline-flex items-center space-x-2 text-sm ${
-            theme === 'dark' ? 'text-cyan-400 hover:text-cyan-300' : 'text-navy-600 hover:text-navy-700'
+            theme === 'dark' ? 'text-accent-purple hover:text-accent-purple/80' : 'text-accent-purple hover:text-accent-purple/80'
           }`}
         >
           <span>View Writeup</span>
