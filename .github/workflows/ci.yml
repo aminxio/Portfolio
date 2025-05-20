@@ -26,4 +26,6 @@ jobs:
       run: npm run lint
 
     - name: Build project
+      env:
+        VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
       run: npm run build 
