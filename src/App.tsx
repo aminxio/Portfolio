@@ -1,11 +1,23 @@
+import Layout from './components/Layout';
+import Home from './components/sections/Home';
+import About from './components/sections/About';
+import Skills from './components/sections/Skills';
+import Certifications from './components/sections/Certifications';
+import Projects from './components/sections/Projects';
+import CTF from './components/sections/CTF';
+import Contact from './components/sections/Contact';
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-blue-600">Portfolio Site</h1>
-        <p className="mt-4">If you can see this, the deployment is working!</p>
-      </div>
-    </div>
+    <Layout>
+      <Home />
+      <About />
+      <Skills />
+      <Certifications />
+      <Projects />
+      <CTF />
+      <Contact />
+    </Layout>
   );
 }
 
