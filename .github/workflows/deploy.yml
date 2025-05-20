@@ -32,13 +32,6 @@ jobs:
       - name: List files before build
         run: ls -la
       
-      - name: Get Custom Domain
-        id: get-domain
-        run: |
-          DOMAIN=$(curl -s https://api.github.com/repos/${{ github.repository }}/pages | jq -r .cname)
-          echo "::set-output name=domain::$DOMAIN"
-          [[ ! -z "$DOMAIN" && "$DOMAIN" != "null" ]] && echo "CUSTOM_DOMAIN=true" >> $GITHUB_ENV || echo "No custom domain found"
-
       - name: Build
         run: |
           npm run build
