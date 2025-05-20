@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/🔷_TypeScript-5.5-blue?style=for-the-badge&logo=typescript" />
   <img src="https://img.shields.io/badge/🎨_Tailwind-3.4-blue?style=for-the-badge&logo=tailwindcss" />
   <img src="https://img.shields.io/badge/⚡_Vite-5.4-blue?style=for-the-badge&logo=vite" />
-  <img src="https://img.shields.io/github/workflow/status/AmazingMoaaz/Portfolio/CI%2FCD?style=for-the-badge" alt="CI/CD Status" />
+  <img src="https://img.shields.io/github/actions/workflow/status/AmazingMoaaz/Portfolio/ci.yml?style=for-the-badge" alt="CI/CD Status" />
   <img src="https://img.shields.io/github/license/AmazingMoaaz/Portfolio?style=for-the-badge" alt="License" />
 </div>
 
@@ -24,6 +24,7 @@
 ## 📋 Table of Contents
 - [⚡ Key Features](#-key-features)
 - [🚀 Quick Start](#-quick-start)
+- [🚀 Deployment](#-deployment)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📂 Project Structure](#-project-structure)
 - [🎨 Customization](#-customization)
@@ -72,9 +73,11 @@
 
 2. **Configure Environment**
    ```bash
-   # Create .env file
+   # Create .env file with your Web3Forms API key
    echo "VITE_WEB3FORMS_KEY=your-api-key" > .env
    ```
+   
+   > **Note:** You'll need a Web3Forms API key for the contact form to work. Get one for free at [web3forms.com](https://web3forms.com/).
 
 3. **Development**
    ```bash
@@ -91,6 +94,29 @@
    ```bash
    npm run lint
    ```
+
+## 🚀 Deployment
+
+### GitHub Pages Deployment
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+1. **Set up the Web3Forms API key in GitHub Actions:**
+   - Go to your repository's Settings
+   - Navigate to Secrets and variables > Actions
+   - Create a new repository secret:
+     - Name: `VITE_WEB3FORMS_KEY`
+     - Value: Your Web3Forms API key
+
+2. **Push to the main branch to trigger deployment:**
+   ```bash
+   git push origin main
+   ```
+
+3. **GitHub Actions will:**
+   - Build your project with the API key from secrets
+   - Deploy it to GitHub Pages
+   - Make it available at your configured GitHub Pages URL
 
 ## 🛠️ Tech Stack
 
