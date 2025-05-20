@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Use environment variable for base URL, defaulting to GitHub Pages path in production
+const base = process.env.CUSTOM_DOMAIN ? '/' : '/Portfolio/';
+
 export default defineConfig({
-  base: '/Portfolio/',
+  base,
   plugins: [react()],
   optimizeDeps: {
     include: ['@emotion/react', '@emotion/styled'],
