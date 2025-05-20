@@ -29,8 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: List files before build
+        run: ls -la
+      
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          echo "Build completed"
+          ls -la dist/
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
