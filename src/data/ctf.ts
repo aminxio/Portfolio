@@ -33,4 +33,22 @@ export const recentChallenges: CTFChallenge[] = [
     points: 50,
     solvedAt: '2024-03-10',
   },
+  {
+    id: 'ctf2',
+    name: 'Reverse Engineering Binary',
+    platform: 'TryHackMe',
+    category: 'Reverse Engineering',
+    difficulty: 'Hard',
+    points: 50,
+    solvedAt: '2024-03-10',
+  },
+  {
+    id: 'ctf2',
+    name: 'Reverse Engineering Binary',
+    platform: 'TryHackMe',
+    category: 'Reverse Engineering',
+    difficulty: 'Hard',
+    points: 50,
+    solvedAt: '2024-03-10',
+  },
 ];
