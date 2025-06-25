@@ -1,0 +1,11 @@
+name = "your-portfolio" # Replace with your project name
+compatibility_date = "2024-01-01"
+
+[env.production]
+routes = [
+  { pattern = "amazingmoaaz.online/*", custom_domain = true }
+]
+
+[build]
+command = "npm run build"
+destination = "dist" 
