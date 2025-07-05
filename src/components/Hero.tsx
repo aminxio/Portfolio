@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Shield, Brain, Terminal } from 'lucide-react';
 
+const words = ["Junior Penetration Tester.", "Bug Hunter."];
+
 export default function Hero() {
   const textRef = useRef<HTMLSpanElement>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  // Updated word order with no period for "Bug Hunter"
-  const words = ["Junior Penetration Tester.", "Bug Hunter."];
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
@@ -57,7 +56,7 @@ export default function Hero() {
         clearTimeout(timeoutId); // Prevent memory leaks
       }
     };
-  }, [currentWordIndex, currentChar, isDeleting, words]); // Depend on state to control effect
+  }, [currentWordIndex, currentChar, isDeleting]); // Depend on state to control effect
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
