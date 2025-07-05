@@ -25,9 +25,10 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Skip particle animation on mobile devices for better performance
+    // Show static background on mobile devices for better performance
     if (hasLimitedResources) {
-      canvas.style.display = 'none';
+      canvas.style.display = 'block';
+      canvas.style.background = 'linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)';
       return;
     }
 

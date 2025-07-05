@@ -8,7 +8,7 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Updated word order with no period for "Bug Hunter"
-  const words = ["Junior Penetration Tester.", "Bug Hunter.", "AI Specialist."];
+  const words = ["Junior Penetration Tester.", "Bug Hunter."];
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
