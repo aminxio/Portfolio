@@ -1,100 +1,25 @@
-import React, { useState, ReactElement, useEffect } from 'react';
-import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag } from 'lucide-react';
-import ThemeToggle from './ui/ThemeToggle';
-import { useTheme } from '../context/ThemeContext';
-
-// Get gradient text color for each navigation link
-const getNavLinkGradient = (href: string, theme: string) => {
-  switch(href) {
-    case '#home': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-gold-300 to-gold-400 text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-gold-500 to-gold-400 text-transparent bg-clip-text';
-    case '#about': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-accent-purple to-accent-blue text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-accent-purple to-accent-blue text-transparent bg-clip-text';
-    case '#skills': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-accent-blue to-accent-emerald text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-accent-blue to-accent-emerald text-transparent bg-clip-text';
-    case '#certifications': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-gold-400 to-accent-purple text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-gold-500 to-accent-purple text-transparent bg-clip-text';
-    case '#projects': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-accent-emerald to-accent-blue text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-accent-emerald to-accent-blue text-transparent bg-clip-text';
-    case '#ctf': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-accent-purple to-gold-400 text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-accent-purple to-gold-500 text-transparent bg-clip-text';
-    case '#contact': return theme === 'dark' 
-      ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-transparent bg-clip-text' 
-      : 'bg-gradient-to-r from-accent-blue to-accent-purple text-transparent bg-clip-text';
-    default: return '';
-  }
-};
-
-// Get icon color based on link
-const getIconColor = (href: string, theme: string) => {
-  switch(href) {
-    case '#home': return theme === 'dark' ? 'text-gold-400' : 'text-gold-500';
-    case '#about': return theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple';
-    case '#skills': return theme === 'dark' ? 'text-accent-blue' : 'text-accent-blue';
-    case '#certifications': return theme === 'dark' ? 'text-gold-400' : 'text-gold-500';
-    case '#projects': return theme === 'dark' ? 'text-accent-emerald' : 'text-accent-emerald';
-    case '#ctf': return theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple';
-    case '#contact': return theme === 'dark' ? 'text-accent-blue' : 'text-accent-blue';
-    default: return theme === 'dark' ? 'text-red-500' : 'text-red-600';
-  }
-};
-
-// Get border color for active link indicator
-const getBorderColor = (href: string, theme: string) => {
-  switch(href) {
-    case '#home': return theme === 'dark' ? 'bg-gold-400' : 'bg-gold-500';
-    case '#about': return theme === 'dark' ? 'bg-accent-purple' : 'bg-accent-purple';
-    case '#skills': return theme === 'dark' ? 'bg-accent-blue' : 'bg-accent-blue';
-    case '#certifications': return theme === 'dark' ? 'bg-gold-400' : 'bg-gold-500';
-    case '#projects': return theme === 'dark' ? 'bg-accent-emerald' : 'bg-accent-emerald';
-    case '#ctf': return theme === 'dark' ? 'bg-accent-purple' : 'bg-accent-purple';
-    case '#contact': return theme === 'dark' ? 'bg-accent-blue' : 'bg-accent-blue';
-    default: return theme === 'dark' ? 'bg-red-500' : 'bg-red-600';
-  }
-};
-
-// Helper to check if element is a Lucide icon
-const isLucideIcon = (element: ReactElement): boolean => {
-  const iconTypes = [Home, User, Shield, Award, Briefcase, Flag, MessageSquare];
-  return iconTypes.some(iconType => element.type === iconType);
-};
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag, Zap } from 'lucide-react';
 
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
-const NavLink = ({ href, children }: NavLinkProps) => {
-  const { theme } = useTheme();
-  const iconColor = getIconColor(href, theme);
-  const textGradient = getNavLinkGradient(href, theme);
-  const borderColor = getBorderColor(href, theme);
-  
+const NavLink = ({ href, children, isActive, onClick }: NavLinkProps) => {
   return (
     <a
       href={href}
-      className={`group relative px-4 py-3 rounded-md transition-all duration-300 hover:scale-105 font-medium`}
+      onClick={onClick}
+      className={`nav-link px-4 py-2 rounded-lg transition-all duration-300 hover:bg-slate-800/50 ${
+        isActive ? 'active text-electric-blue' : ''
+      }`}
     >
-      <span className={`relative z-10 flex items-center ${textGradient}`}>
-        {React.Children.map(children, child => {
-          if (React.isValidElement(child) && isLucideIcon(child as ReactElement)) {
-            return React.cloneElement(child as ReactElement, { 
-              className: `w-4 h-4 inline mr-2 ${iconColor} group-hover:animate-pulse`
-            });
-          }
-          return child;
-        })}
+      <span className="flex items-center space-x-2 font-medium">
+        {children}
       </span>
-      <div
-        className={`absolute h-[3px] w-full bottom-0 left-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-t-md ${borderColor}`}
-      />
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:bg-black-700/30 rounded-md transition-all duration-300`}></div>
     </a>
   );
 };
@@ -103,19 +28,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
-  const { theme } = useTheme();
 
-  // Update the active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      // For sticky navbar effect
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
 
-      // Find active section
       const sections = ['home', 'about', 'skills', 'certifications', 'projects', 'ctf', 'contact'];
       let current = '';
 
@@ -141,145 +58,108 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      className={`fixed w-full z-40 transition-all duration-500 ${
         scrolled 
-          ? 'py-1 backdrop-blur-xl shadow-lg border-b' 
-          : 'py-3 backdrop-blur-md'
-      } ${
-        theme === 'dark'
-          ? 'bg-black-900/70 border-gold-400/10'
-          : 'bg-black-800/70 border-gold-500/10'
+          ? 'py-3 glass-effect shadow-premium' 
+          : 'py-4 bg-slate-950/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center">
+          {/* Logo */}
           <a 
             href="#home" 
-            className="group flex items-center space-x-2 transition-all duration-300 hover:scale-105"
+            className="group flex items-center space-x-3 transition-all duration-300 hover:scale-105"
           >
-            <div className={`p-2 rounded-full transition-all duration-300 ${
-              theme === 'dark'
-                ? 'bg-black-800/80 group-hover:bg-black-700/80'
-                : 'bg-black-700/80 group-hover:bg-black-600/80'
-            }`}>
-              <Terminal className={`w-6 h-6 ${
-                theme === 'dark' 
-                  ? 'text-gold-400 group-hover:animate-pulse' 
-                  : 'text-gold-500 group-hover:animate-pulse'
-              }`} />
+            <div className="relative p-3 rounded-xl bg-gradient-to-r from-electric-blue/20 to-electric-purple/20 border border-electric-blue/30 group-hover:border-electric-blue/60 transition-all duration-300">
+              <Terminal className="w-6 h-6 text-electric-blue group-hover:animate-pulse" />
+              <div className="absolute inset-0 rounded-xl bg-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
-            <div>
-              <span className={`relative font-bold text-xl ${
-                theme === 'dark' 
-                  ? 'bg-gradient-to-r from-gold-300 via-accent-purple to-accent-blue text-transparent bg-clip-text animate-gradient-x' 
-                  : 'bg-gradient-to-r from-gold-500 via-accent-purple to-accent-blue text-transparent bg-clip-text animate-gradient-x'
-              }`}>
+            <div className="relative">
+              <span className="font-cyber font-bold text-xl gradient-text">
                 AmazingMoaaz
               </span>
-              <div className={`h-[2px] w-0 group-hover:w-full transition-all duration-300 ${
-                theme === 'dark' ? 'bg-gradient-to-r from-gold-300 via-accent-purple to-accent-blue' : 'bg-gradient-to-r from-gold-500 via-accent-purple to-accent-blue'
-              }`}></div>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-electric-blue to-electric-purple group-hover:w-full transition-all duration-500"></div>
             </div>
           </a>
 
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            <NavLink href="#home">
-              <Home className="w-4 h-4 inline mr-1" /> Home
+            <NavLink href="#home" isActive={activeSection === '#home'}>
+              <Home className="w-4 h-4" />
+              <span>Home</span>
             </NavLink>
-            <NavLink href="#about">
-              <User className="w-4 h-4 inline mr-1" /> About
+            <NavLink href="#about" isActive={activeSection === '#about'}>
+              <User className="w-4 h-4" />
+              <span>About</span>
             </NavLink>
-            <NavLink href="#skills">
-              <Shield className="w-4 h-4 inline mr-1" /> Skills
+            <NavLink href="#skills" isActive={activeSection === '#skills'}>
+              <Shield className="w-4 h-4" />
+              <span>Skills</span>
             </NavLink>
-            <NavLink href="#certifications">
-              <Award className="w-4 h-4 inline mr-1" /> Certifications
+            <NavLink href="#certifications" isActive={activeSection === '#certifications'}>
+              <Award className="w-4 h-4" />
+              <span>Certifications</span>
             </NavLink>
-            <NavLink href="#projects">
-              <Briefcase className="w-4 h-4 inline mr-1" /> Projects
+            <NavLink href="#projects" isActive={activeSection === '#projects'}>
+              <Briefcase className="w-4 h-4" />
+              <span>Projects</span>
             </NavLink>
-            <NavLink href="#ctf">
-              <Flag className="w-4 h-4 inline mr-1" /> CTF
+            <NavLink href="#ctf" isActive={activeSection === '#ctf'}>
+              <Flag className="w-4 h-4" />
+              <span>CTF</span>
             </NavLink>
-            <NavLink href="#contact">
-              <MessageSquare className="w-4 h-4 inline mr-1" /> Contact
+            <NavLink href="#contact" isActive={activeSection === '#contact'}>
+              <MessageSquare className="w-4 h-4" />
+              <span>Contact</span>
             </NavLink>
-            <div className="ml-2 pl-2 border-l border-silver-400/20">
-              <ThemeToggle />
-            </div>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
-              theme === 'dark' 
-                ? 'bg-black-800/80 text-gold-400 hover:bg-black-700/80' 
-                : 'bg-black-700/80 text-gold-500 hover:bg-black-600/80'
-            }`}
+            className="lg:hidden p-3 rounded-lg glass-effect hover:bg-slate-800/50 transition-all duration-300"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className="w-6 h-6 transition-transform duration-300 rotate-90" />
+              <X className="w-6 h-6 text-electric-blue" />
             ) : (
-              <Menu className="w-6 h-6 transition-transform duration-300" />
+              <Menu className="w-6 h-6 text-electric-blue" />
             )}
           </button>
         </div>
 
-        {/* Mobile Menu - Slide Down */}
+        {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-500 ease-in-out ${
             isOpen 
-              ? 'max-h-[500px] opacity-100 mt-4 mb-2' 
+              ? 'max-h-96 opacity-100 mt-6 mb-4' 
               : 'max-h-0 opacity-0 mt-0 mb-0'
           } overflow-hidden`}
         >
-          <div className={`rounded-xl p-2 ${
-            theme === 'dark' 
-              ? 'bg-black-800/90 backdrop-blur-xl border border-gold-400/10' 
-              : 'bg-black-700/90 backdrop-blur-xl border border-gold-500/10'
-          }`}>
-            <div className="space-y-1 p-2">
+          <div className="glass-effect rounded-xl p-4">
+            <div className="space-y-2">
               {[
-                { href: '#home', icon: <Home />, label: 'Home' },
-                { href: '#about', icon: <User />, label: 'About' },
-                { href: '#skills', icon: <Shield />, label: 'Skills' },
-                { href: '#certifications', icon: <Award />, label: 'Certifications' },
-                { href: '#projects', icon: <Briefcase />, label: 'Projects' },
-                { href: '#ctf', icon: <Flag />, label: 'CTF' },
-                { href: '#contact', icon: <MessageSquare />, label: 'Contact' },
+                { href: '#home', icon: <Home className="w-4 h-4" />, label: 'Home' },
+                { href: '#about', icon: <User className="w-4 h-4" />, label: 'About' },
+                { href: '#skills', icon: <Shield className="w-4 h-4" />, label: 'Skills' },
+                { href: '#certifications', icon: <Award className="w-4 h-4" />, label: 'Certifications' },
+                { href: '#projects', icon: <Briefcase className="w-4 h-4" />, label: 'Projects' },
+                { href: '#ctf', icon: <Flag className="w-4 h-4" />, label: 'CTF' },
+                { href: '#contact', icon: <MessageSquare className="w-4 h-4" />, label: 'Contact' },
               ].map((item, index) => (
-                <a 
+                <NavLink
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 
-                    ${getNavLinkGradient(item.href, theme)}
-                    ${activeSection === item.href 
-                      ? theme === 'dark' ? 'bg-black-700/60' : 'bg-black-600/60' 
-                      : 'hover:bg-black-700/40'
-                    }`}
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  isActive={activeSection === item.href}
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className={`p-2 rounded-full mr-3 ${
-                    theme === 'dark' 
-                      ? 'bg-black-700/80' 
-                      : 'bg-black-600/80'
-                  }`}>
-                    {React.cloneElement(item.icon as ReactElement, { 
-                      className: `w-4 h-4 ${getIconColor(item.href, theme)}`
-                    })}
+                  <div className="p-2 rounded-lg bg-slate-800/30 mr-3">
+                    {item.icon}
                   </div>
-                  <span className="font-medium">{item.label}</span>
-                </a>
+                  <span>{item.label}</span>
+                </NavLink>
               ))}
-            </div>
-            
-            <div className="mt-4 pt-4 border-t border-silver-400/10 px-4 flex justify-between items-center">
-              <span className={`text-sm ${theme === 'dark' ? 'text-silver-400' : 'text-silver-400'}`}>
-                Toggle Theme
-              </span>
-              <ThemeToggle />
             </div>
           </div>
         </div>

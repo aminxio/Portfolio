@@ -1,18 +1,14 @@
 import React from 'react';
 import Navbar from './Navbar';
 import ParticleBackground from './ParticleBackground';
-import { useTheme } from '../context/ThemeContext';
+import ScrollProgress from './ui/ScrollProgress';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = useTheme();
-  
   return (
-    <div className={`min-h-screen font-mono transition-colors duration-300
-      ${theme === 'dark' 
-        ? 'bg-black-900 text-red-500' 
-        : 'bg-black-800 text-red-400'}`}
-    >
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-body overflow-x-hidden">
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 -z-10"></div>
       <ParticleBackground />
+      <ScrollProgress />
       <Navbar />
       <main className="relative z-10">
         {children}

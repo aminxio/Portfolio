@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { skillCategories } from '../../data/skills';
 import SkillCategoryButton from '../ui/skills/SkillCategoryButton';
 import SkillDetails from '../ui/skills/SkillDetails';
-import { useTheme } from '../../context/ThemeContext';
+import { Shield, Code, Zap, Lock } from 'lucide-react';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const { theme } = useTheme();
 
   const handleCategoryChange = (index: number) => {
     if (index === activeCategory) return;
@@ -19,21 +18,25 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className={`py-20 px-4 ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-black-800/50 to-black-900/70' 
-        : 'bg-gradient-to-b from-black-700/50 to-black-800/70'
-    }`}>
-      <div className="max-w-6xl mx-auto">
-        <h2 className={`text-3xl font-bold mb-12 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-r from-accent-blue via-gold-400 to-accent-purple text-transparent bg-clip-text animate-gradient-x' 
-            : 'bg-gradient-to-r from-accent-blue via-gold-500 to-accent-purple text-transparent bg-clip-text animate-gradient-x'
-        }`}>
-          Skills & Expertise
-        </h2>
+    <section id="skills" className="section-padding bg-slate-900/50">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="flex items-center justify-center space-x-4 mb-6">
+            <Shield className="w-8 h-8 text-electric-blue" />
+            <h2 className="heading-primary text-4xl md:text-6xl gradient-text">
+              Skills & Expertise
+            </h2>
+            <Code className="w-8 h-8 text-electric-purple" />
+          </div>
+          <div className="w-32 h-1 bg-gradient-to-r from-electric-blue via-electric-purple to-electric-emerald mx-auto mb-6"></div>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Comprehensive expertise across cybersecurity domains, from penetration testing to AI-driven security solutions
+          </p>
+        </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {/* Category Navigation */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {skillCategories.map((category, index) => (
             <SkillCategoryButton
               key={category.title}
@@ -44,19 +47,52 @@ export default function Skills() {
           ))}
         </div>
 
+
+
+        {/* Active Category Details */}
         <div className="relative">
           <div className={`transition-all duration-300 ${
             isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
           }`}>
-            <div className={`p-6 rounded-lg ${
-              theme === 'dark' 
-                ? 'bg-black-800/70 border border-accent-blue/20' 
-                : 'bg-black-700/70 border border-accent-blue/20'
-            }`}>
+            <div className="premium-card p-8 border-l-4 border-electric-blue">
               <SkillDetails
                 category={skillCategories[activeCategory]}
                 isAnimating={isAnimating}
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Professional Certifications Preview */}
+        <div className="mt-16 text-center">
+          <div className="premium-card p-8">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <Lock className="w-6 h-6 text-electric-amber" />
+              <h3 className="heading-secondary text-2xl text-electric-amber">
+                Continuous Learning
+              </h3>
+              <Zap className="w-6 h-6 text-electric-amber" />
+            </div>
+            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+              Committed to staying ahead of emerging threats and technologies through continuous education and hands-on practice.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                'Ethical Hacking',
+                'Cloud Security',
+                'AI/ML Security',
+                'DevSecOps',
+                'Incident Response',
+                'Threat Intelligence'
+              ].map((skill, index) => (
+                <span 
+                  key={skill}
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue/20 to-electric-purple/20 border border-electric-blue/30 text-electric-blue text-sm font-medium hover:scale-105 transition-transform duration-300"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </div>

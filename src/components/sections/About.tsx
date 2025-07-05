@@ -1,76 +1,145 @@
-import { Book, Globe } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
+import { Globe, Zap, Brain, Code, Shield, GraduationCap, Award } from 'lucide-react';
 
 export default function About() {
-  const { theme } = useTheme();
-
   return (
-    <section id="about" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className={`text-3xl font-bold mb-8 ${
-          theme === 'dark'
-            ? 'bg-gradient-to-r from-accent-purple via-gold-400 to-accent-blue text-transparent bg-clip-text animate-gradient-x'
-            : 'bg-gradient-to-r from-accent-purple via-gold-500 to-accent-blue text-transparent bg-clip-text animate-gradient-x'
-        }`}>
-          About Me
-        </h2>
+    <section id="about" className="section-padding grid-bg">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="heading-primary text-4xl md:text-6xl mb-6 gradient-text">
+            About Me
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-electric-blue to-electric-purple mx-auto"></div>
+        </div>
         
-        <div className="space-y-8">
-          <div className="flex items-start space-x-4">
-            <Book className={`w-6 h-6 mt-1 ${
-              theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple'
-            }`} />
-            <div>
-              <h3 className={`text-xl font-semibold mb-2 ${
-                theme === 'dark' ? 'bg-gradient-to-r from-accent-purple to-accent-blue text-transparent bg-clip-text' : 'bg-gradient-to-r from-accent-purple to-accent-blue text-transparent bg-clip-text'
-              }`}>
-                Education
-              </h3>
-              <p className={theme === 'dark' ? 'text-gold-400' : 'text-gold-500'}>
-                Bachelor's in Artificial Intelligence
-              </p>
-              <p className={theme === 'dark' ? 'text-silver-400' : 'text-silver-400'}>
-                Delta University
-              </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Column - Professional Info */}
+          <div className="space-y-6 animate-slide-right">
+            {/* Education */}
+            <div className="premium-card p-6 hover-lift">
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-electric-blue/20 to-electric-purple/20 border border-electric-blue/30">
+                  <GraduationCap className="w-6 h-6 text-electric-blue" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="heading-secondary text-xl text-electric-blue mb-2">
+                    Education
+                  </h3>
+                  <p className="text-lg font-semibold text-slate-200 mb-1">
+                    Bachelor's in Artificial Intelligence
+                  </p>
+                  <p className="text-slate-400">
+                    Delta University • Currently Enrolled
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Training */}
+            <div className="premium-card p-6 hover-lift">
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-electric-emerald/20 to-electric-cyan/20 border border-electric-emerald/30">
+                  <Shield className="w-6 h-6 text-electric-emerald" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="heading-secondary text-xl text-electric-emerald mb-2">
+                    Professional Training
+                  </h3>
+                  <p className="text-lg font-semibold text-slate-200 mb-1">
+                    Vulnerability Analysis / Penetration Testing
+                  </p>
+                  <p className="text-slate-400">
+                    Digital Egypt Pioneers Initiative • Completed
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Languages */}
+            <div className="premium-card p-6 hover-lift">
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-electric-purple/20 to-electric-rose/20 border border-electric-purple/30">
+                  <Globe className="w-6 h-6 text-electric-purple" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="heading-secondary text-xl text-electric-purple mb-2">
+                    Languages
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-200">Arabic</span>
+                      <span className="text-electric-emerald font-semibold">Native</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-200">English</span>
+                      <span className="text-electric-blue font-semibold">Fluent</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-start space-x-4">
-            <Book className={`w-6 h-6 mt-1 ${
-              theme === 'dark' ? 'text-gold-400' : 'text-gold-500'
-            }`} />
-            <div>
-              <h3 className={`text-xl font-semibold mb-2 ${
-                theme === 'dark' ? 'bg-gradient-to-r from-gold-400 to-accent-purple text-transparent bg-clip-text' : 'bg-gradient-to-r from-gold-500 to-accent-purple text-transparent bg-clip-text'
-              }`}>
-                Training
-              </h3>
-              <p className={theme === 'dark' ? 'text-accent-purple' : 'text-accent-purple'}>
-                Vulnerability Analysis / Penetration Testing
-              </p>
-              <p className={theme === 'dark' ? 'text-silver-400' : 'text-silver-400'}>
-                Digital Egypt Pioneers Initiative
-              </p>
+          {/* Right Column - Bio & Mission */}
+          <div className="space-y-6 animate-slide-left">
+            {/* Professional Bio */}
+            <div className="premium-card p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Brain className="w-6 h-6 text-electric-amber" />
+                <h3 className="heading-secondary text-xl text-electric-amber">
+                  Professional Profile
+                </h3>
+              </div>
+              
+              <div className="space-y-4 text-slate-300 leading-relaxed">
+                <p>
+                  Passionate cybersecurity professional with a strong foundation in 
+                  <span className="text-electric-blue font-semibold"> artificial intelligence</span> and 
+                  <span className="text-electric-purple font-semibold"> ethical hacking</span>. 
+                  Currently pursuing advanced studies while gaining hands-on experience in 
+                  vulnerability assessment and penetration testing.
+                </p>
+                
+                <p>
+                  My mission is to bridge the gap between AI innovation and cybersecurity, 
+                  creating intelligent defense systems that can adapt to emerging threats. 
+                  I believe in the power of continuous learning and ethical practices to 
+                  build a safer digital future.
+                </p>
+                
+                <p>
+                  Specializing in web application security, network penetration testing, 
+                  and AI-driven security solutions. Always eager to tackle new challenges 
+                  and contribute to the cybersecurity community.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="flex items-start space-x-4">
-            <Globe className={`w-6 h-6 mt-1 ${
-              theme === 'dark' ? 'text-accent-blue' : 'text-accent-blue'
-            }`} />
-            <div>
-              <h3 className={`text-xl font-semibold mb-2 ${
-                theme === 'dark' ? 'bg-gradient-to-r from-accent-blue to-gold-400 text-transparent bg-clip-text' : 'bg-gradient-to-r from-accent-blue to-gold-500 text-transparent bg-clip-text'
-              }`}>
-                Languages
-              </h3>
-              <p className={theme === 'dark' ? 'text-accent-blue' : 'text-accent-blue'}>
-                Arabic
-              </p>
-              <p className={theme === 'dark' ? 'text-gold-400' : 'text-gold-500'}>
-                English
-              </p>
+            {/* Core Values */}
+            <div className="premium-card p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Zap className="w-6 h-6 text-electric-rose" />
+                <h3 className="heading-secondary text-xl text-electric-rose">
+                  Core Values
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: Shield, label: 'Ethical Practice', color: 'text-electric-blue' },
+                  { icon: Brain, label: 'Innovation', color: 'text-electric-purple' },
+                  { icon: Code, label: 'Excellence', color: 'text-electric-emerald' },
+                  { icon: Award, label: 'Integrity', color: 'text-electric-amber' },
+                ].map((value) => (
+                  <div key={value.label} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/30">
+                    <value.icon className={`w-5 h-5 ${value.color}`} />
+                    <span className="text-slate-200 font-medium">{value.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+
+
           </div>
         </div>
       </div>

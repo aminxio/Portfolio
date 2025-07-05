@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
-interface TypeWriterProps {
+interface ProfessionalTypeWriterProps {
   words: string[];
   delay?: number;
   typingSpeed?: number;
   deletingSpeed?: number;
 }
 
-export default function TypeWriter({ 
+export default function ProfessionalTypeWriter({ 
   words, 
   delay = 2000, 
-  typingSpeed = 120, 
-  deletingSpeed = 60 
-}: TypeWriterProps) {
+  typingSpeed = 100, 
+  deletingSpeed = 50 
+}: ProfessionalTypeWriterProps) {
   const [text, setText] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -72,10 +72,10 @@ export default function TypeWriter({
 
   return (
     <div className="font-mono relative inline-block">
-      <span className="text-slate-500">{'>'}</span>
+      <span className="text-slate-400">{'>'}</span>
       <span className="text-electric-blue ml-2 font-semibold">
-        <span className="drop-shadow-lg">{text}</span>
-        <span className="animate-pulse ml-1 text-electric-purple font-bold">|</span>
+        {text}
+        <span className="animate-pulse text-electric-purple ml-1 font-bold">|</span>
       </span>
     </div>
   );
