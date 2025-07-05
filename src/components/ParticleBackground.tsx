@@ -15,9 +15,10 @@ export default memo(function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Check if device is mobile or has limited resources
+    // Enhanced mobile detection
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const hasLimitedResources = window.innerWidth < 768 || isMobile;
+    const isLowEnd = window.innerWidth < 768 || navigator.hardwareConcurrency < 4;
+    const isTouchDevice = 'ontouchstart' in window;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -25,12 +26,17 @@ export default memo(function ParticleBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Show static background on mobile devices for better performance
-    if (hasLimitedResources) {
-      canvas.style.display = 'block';
-      canvas.style.background = 'linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)';
-      return;
-    }
+    // Mobile-optimized particle system (keep all features but lighter)
+    const performanceConfig = {
+      maxParticles: isMobile ? 8 : isLowEnd ? 15 : 25,
+      connectionDistance: isMobile ? 60 : 80,
+      animationQuality: isMobile ? 'low' : 'high',
+      mouseInteraction: !isTouchDevice,
+      shadowBlur: isMobile ? 4 : 8,
+      frameSkip: isMobile ? 2 : 1 // Skip frames on mobile for 30fps instead of 60fps
+    };
+
+    let frameCount = 0;
 
     let particles: Particle[] = [];
     let mouseX = 0;
@@ -47,23 +53,25 @@ export default memo(function ParticleBackground() {
 
     const createParticles = () => {
       particles = [];
-      const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 50);
+      const numberOfParticles = performanceConfig.maxParticles;
       
       for (let i = 0; i < numberOfParticles; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.6 + 0.2,
+          dx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5),
+          dy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5),
+          size: Math.random() * (isMobile ? 1.5 : 2) + 0.5,
+          opacity: Math.random() * 0.4 + 0.3,
           color: colors[Math.floor(Math.random() * colors.length)],
-          speed: Math.random() * 0.3 + 0.1,
+          speed: Math.random() * (isMobile ? 0.2 : 0.3) + 0.1,
         });
       }
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!performanceConfig.mouseInteraction) return;
+      
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
@@ -72,14 +80,16 @@ export default memo(function ParticleBackground() {
       clearTimeout(mouseTimeout);
       mouseTimeout = setTimeout(() => {
         isMouseMoving = false;
-      }, 100);
+      }, 150);
     };
 
     const drawParticle = (particle: Particle) => {
       ctx.save();
       
-      ctx.shadowColor = particle.color;
-      ctx.shadowBlur = 8;
+      if (performanceConfig.animationQuality === 'high') {
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = performanceConfig.shadowBlur;
+      }
       
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
@@ -91,24 +101,32 @@ export default memo(function ParticleBackground() {
     };
 
     const drawConnections = () => {
+      // Skip connections on every other frame for mobile
+      if (isMobile && frameCount % 2 !== 0) return;
+      
       particles.forEach((particle, i) => {
         particles.slice(i + 1).forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 100) {
+          if (distance < performanceConfig.connectionDistance) {
             ctx.save();
             
-            const opacity = (1 - distance / 100) * 0.2;
-            const gradient = ctx.createLinearGradient(
-              particle.x, particle.y,
-              otherParticle.x, otherParticle.y
-            );
-            gradient.addColorStop(0, particle.color);
-            gradient.addColorStop(1, otherParticle.color);
+            const opacity = (1 - distance / performanceConfig.connectionDistance) * (isMobile ? 0.15 : 0.2);
             
-            ctx.strokeStyle = gradient;
+            if (performanceConfig.animationQuality === 'high') {
+              const gradient = ctx.createLinearGradient(
+                particle.x, particle.y,
+                otherParticle.x, otherParticle.y
+              );
+              gradient.addColorStop(0, particle.color);
+              gradient.addColorStop(1, otherParticle.color);
+              ctx.strokeStyle = gradient;
+            } else {
+              ctx.strokeStyle = particle.color;
+            }
+            
             ctx.lineWidth = 1;
             ctx.globalAlpha = opacity;
             
@@ -124,11 +142,19 @@ export default memo(function ParticleBackground() {
     };
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(2, 6, 23, 0.05)';
+      frameCount++;
+      
+      // Skip frames on mobile for better performance
+      if (isMobile && frameCount % performanceConfig.frameSkip !== 0) {
+        requestAnimationFrame(animate);
+        return;
+      }
+
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach(particle => {
-        if (isMouseMoving) {
+        if (isMouseMoving && performanceConfig.mouseInteraction) {
           const dx = mouseX - particle.x;
           const dy = mouseY - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -136,8 +162,8 @@ export default memo(function ParticleBackground() {
           if (distance < 120) {
             const angle = Math.atan2(dy, dx);
             const force = (120 - distance) / 120;
-            particle.dx -= Math.cos(angle) * force * 0.2;
-            particle.dy -= Math.sin(angle) * force * 0.2;
+            particle.dx -= Math.cos(angle) * force * (isMobile ? 0.1 : 0.2);
+            particle.dy -= Math.sin(angle) * force * (isMobile ? 0.1 : 0.2);
           }
         }
 

@@ -63,17 +63,18 @@ export default memo(function Home() {
           }}></div>
         </div>
         
-        {/* Matrix Digital Rain - Optimized */}
+        {/* Matrix Digital Rain - Mobile Optimized */}
         <div className="absolute inset-0 overflow-hidden opacity-15">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: window.innerWidth < 768 ? 4 : 8 }).map((_, i) => (
             <div
               key={i}
-              className="absolute top-0 w-px bg-gradient-to-b from-electric-blue/60 via-electric-purple/40 to-transparent animate-digital-rain"
+              className="absolute top-0 w-px bg-gradient-to-b from-electric-blue/60 via-electric-purple/40 to-transparent animate-digital-rain will-change-transform"
               style={{
-                left: `${(i + 1) * 12}%`,
+                left: `${(i + 1) * (window.innerWidth < 768 ? 20 : 12)}%`,
                 height: `${250 + (i % 3) * 100}px`,
                 animationDelay: `${i * 0.8}s`,
                 animationDuration: `${4 + (i % 3)}s`,
+                transform: 'translate3d(0, 0, 0)' // Hardware acceleration
               }}
             />
           ))}
@@ -85,18 +86,19 @@ export default memo(function Home() {
         <div className="absolute bottom-1/4 left-3/4 w-96 h-96 bg-electric-emerald/10 rounded-full blur-3xl animate-float-medium"></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-electric-amber/8 rounded-full blur-2xl animate-pulse"></div>
         
-        {/* Particle System - Optimized */}
+        {/* Particle System - Mobile Optimized */}
         <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: window.innerWidth < 768 ? 6 : 12 }).map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-electric-cyan/60 rounded-full animate-particle-drift"
+              className="absolute w-1 h-1 bg-electric-cyan/60 rounded-full animate-particle-drift will-change-transform"
               style={{
                 top: `${(i % 4) * 25 + 10}%`,
                 left: `${(i % 3) * 33 + 10}%`,
                 animationDelay: `${i * 0.8}s`,
                 animationDuration: `${10 + (i % 4) * 2}s`,
-                boxShadow: '0 0 6px currentColor'
+                boxShadow: '0 0 6px currentColor',
+                transform: 'translate3d(0, 0, 0)' // Hardware acceleration
               }}
             />
           ))}
@@ -141,13 +143,13 @@ export default memo(function Home() {
             {techIcons.map(({ icon: Icon, color, delay }, index) => (
               <div 
                 key={index}
-                className="relative group"
+                className="relative group will-change-transform"
                 style={{ animationDelay: delay }}
               >
-                <div className="p-3 rounded-xl glass-effect hover:scale-110 transition-all duration-300 float-animation">
+                <div className="p-3 rounded-xl glass-effect hover:scale-110 transition-all duration-300 float-animation transform-gpu">
                   <Icon className={`w-8 h-8 ${color}`} />
                 </div>
-                <div className={`absolute inset-0 rounded-xl ${color.replace('text-', 'bg-')}/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                <div className={`absolute inset-0 rounded-xl ${color.replace('text-', 'bg-')}/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform-gpu`}></div>
               </div>
             ))}
           </div>
@@ -252,15 +254,16 @@ export default memo(function Home() {
               <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-electric-amber animate-glow-pulse" style={{ animationDelay: '1.5s' }}></div>
               
               {/* Floating Particles */}
-              {Array.from({ length: 6 }).map((_, i) => (
+              {Array.from({ length: window.innerWidth < 768 ? 3 : 6 }).map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-2 h-2 bg-electric-blue rounded-full animate-particle-float opacity-60"
+                  className="absolute w-2 h-2 bg-electric-blue rounded-full animate-particle-float opacity-60 will-change-transform"
                   style={{
-                    top: `${20 + Math.random() * 60}%`,
-                    left: `${20 + Math.random() * 60}%`,
+                    top: `${20 + (i % 3) * 20}%`,
+                    left: `${20 + (i % 2) * 40}%`,
                     animationDelay: `${i * 0.8}s`,
                     boxShadow: '0 0 10px currentColor',
+                    transform: 'translate3d(0, 0, 0)' // Hardware acceleration
                   }}
                 />
               ))}

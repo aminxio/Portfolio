@@ -24,6 +24,18 @@
     margin: 0;
     padding: 0;
   }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    * {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
+    body {
+      background-attachment: scroll; /* Better for mobile */
+    }
+  }
   
   * {
     scrollbar-width: thin;
@@ -51,6 +63,18 @@
 }
 
 @layer components {
+  /* Performance optimizations */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+
+  @media (max-width: 768px) {
+    .transform-gpu {
+      will-change: auto; /* Reduce will-change on mobile for memory */
+    }
+  }
+
   /* Premium Glass Effect */
   .glass-effect {
     background: rgba(15, 23, 42, 0.8);

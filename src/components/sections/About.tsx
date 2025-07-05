@@ -1,8 +1,29 @@
-import { Globe, Zap, Brain, Code, Shield, GraduationCap, Award } from 'lucide-react';
+import { memo } from 'react';
+import { Globe, Zap, Brain, Code, Shield, GraduationCap, Award, User } from 'lucide-react';
 
-export default function About() {
+export default memo(function About() {
   return (
     <section id="about" className="section-padding grid-bg">
+      {/* Background animations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Reduced animations for mobile */}
+        {Array.from({ length: window.innerWidth < 768 ? 3 : 6 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute opacity-5 animate-float-gentle will-change-transform"
+            style={{
+              top: `${15 + i * 15}%`,
+              left: `${10 + (i % 2) * 70}%`,
+              animationDelay: `${i * 1}s`,
+              animationDuration: '8s',
+              transform: 'translate3d(0, 0, 0)'
+            }}
+          >
+            <User className="w-12 h-12 text-electric-blue" />
+          </div>
+        ))}
+      </div>
+      
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -138,11 +159,9 @@ export default function About() {
                 ))}
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
     </section>
   );
-}
+});
