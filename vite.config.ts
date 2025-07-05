@@ -10,6 +10,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@emotion/react', '@emotion/styled', 'lucide-react'],
   },
+  esbuild: {
+    drop: ['console', 'debugger'],
+  },
   server: {
     host: true,
     port: 5173,
@@ -29,7 +32,6 @@ export default defineConfig({
   build: {
     assetsDir: 'assets',
     target: 'esnext',
-    minify: 'terser',
     cssCodeSplit: true,
     rollupOptions: {
       output: {
@@ -38,12 +40,6 @@ export default defineConfig({
           icons: ['lucide-react'],
           motion: ['framer-motion'],
         },
-      },
-    },
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
       },
     },
   },
