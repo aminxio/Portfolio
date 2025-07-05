@@ -1,4 +1,4 @@
-import { Shield, Code, Cloud, Brain, CheckCircle, Star, Zap } from 'lucide-react';
+import { Shield, Code, Cloud, Brain, CheckCircle, Star } from 'lucide-react';
 import { SkillCategory } from '../../../types/skills';
 import SkillCard from './SkillCard';
 

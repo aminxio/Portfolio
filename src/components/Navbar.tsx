@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag, Zap } from 'lucide-react';
+import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag } from 'lucide-react';
 
 interface NavLinkProps {
   href: string;
@@ -147,7 +147,7 @@ export default function Navbar() {
                 { href: '#projects', icon: <Briefcase className="w-4 h-4" />, label: 'Projects' },
                 { href: '#ctf', icon: <Flag className="w-4 h-4" />, label: 'CTF' },
                 { href: '#contact', icon: <MessageSquare className="w-4 h-4" />, label: 'Contact' },
-              ].map((item, index) => (
+              ].map((item) => (
                 <NavLink
                   key={item.href}
                   href={item.href}

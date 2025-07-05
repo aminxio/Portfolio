@@ -57,7 +57,7 @@ export default function Hero() {
         clearTimeout(timeoutId); // Prevent memory leaks
       }
     };
-  }, [currentWordIndex, currentChar, isDeleting]); // Depend on state to control effect
+  }, [currentWordIndex, currentChar, isDeleting, words]); // Depend on state to control effect
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
