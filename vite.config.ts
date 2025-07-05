@@ -8,7 +8,7 @@ export default defineConfig({
   base,
   plugins: [react()],
   optimizeDeps: {
-    include: ['@emotion/react', '@emotion/styled'],
+    include: ['@emotion/react', '@emotion/styled', 'lucide-react'],
   },
   server: {
     host: true,
@@ -28,12 +28,22 @@ export default defineConfig({
   },
   build: {
     assetsDir: 'assets',
+    target: 'esnext',
+    minify: 'terser',
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          utils: ['lucide-react'],
+          icons: ['lucide-react'],
+          motion: ['framer-motion'],
         },
+      },
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
       },
     },
   },

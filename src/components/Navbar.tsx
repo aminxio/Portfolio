@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Menu, X, Terminal, User, Briefcase, Shield, MessageSquare, Home, Award, Flag } from 'lucide-react';
 
 interface NavLinkProps {
@@ -8,7 +8,7 @@ interface NavLinkProps {
   onClick?: () => void;
 }
 
-const NavLink = ({ href, children, isActive, onClick }: NavLinkProps) => {
+const NavLink = memo(({ href, children, isActive, onClick }: NavLinkProps) => {
   return (
     <a
       href={href}
@@ -22,39 +22,51 @@ const NavLink = ({ href, children, isActive, onClick }: NavLinkProps) => {
       </span>
     </a>
   );
-};
+});
 
-export default function Navbar() {
+export default memo(function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'about', 'skills', 'certifications', 'projects', 'ctf', 'contact'];
-      let current = '';
+    const sections = ['home', 'about', 'skills', 'certifications', 'projects', 'ctf', 'contact'];
+    let current = '';
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            current = section;
-            break;
-          }
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          current = section;
+          break;
         }
       }
+    }
 
-      if (current) {
-        setActiveSection(`#${current}`);
+    if (current) {
+      setActiveSection(`#${current}`);
+    }
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [handleScroll]);
 
   return (
     <nav 
@@ -166,4 +178,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+});

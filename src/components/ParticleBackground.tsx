@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 interface Particle {
   x: number;
@@ -11,7 +11,7 @@ interface Particle {
   speed: number;
 }
 
-export default function ParticleBackground() {
+export default memo(function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function ParticleBackground() {
 
     const createParticles = () => {
       particles = [];
-      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 12000);
+      const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 50);
       
       for (let i = 0; i < numberOfParticles; i++) {
         particles.push({
@@ -181,4 +181,4 @@ export default function ParticleBackground() {
       }}
     />
   );
-}
+});

@@ -1,11 +1,21 @@
 import { Shield, ArrowDown, Terminal, Bug, Lock, Zap, Eye, Cpu, Code, MessageSquare } from 'lucide-react';
 import ProfessionalTypeWriter from '../ui/ProfessionalTypeWriter';
 import PremiumButton from '../ui/PremiumButton';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, memo } from 'react';
 
-export default function Home() {
+export default memo(function Home() {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Memoize tech icons array to prevent recreation on every render
+  const techIcons = useMemo(() => [
+    { icon: Shield, color: 'text-electric-blue', delay: '0s' },
+    { icon: Terminal, color: 'text-electric-purple', delay: '0.2s' },
+    { icon: Bug, color: 'text-electric-emerald', delay: '0.4s' },
+    { icon: Lock, color: 'text-electric-amber', delay: '0.6s' },
+    { icon: Cpu, color: 'text-electric-rose', delay: '0.8s' },
+    { icon: Code, color: 'text-electric-cyan', delay: '1s' },
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,20 +63,17 @@ export default function Home() {
           }}></div>
         </div>
         
-        {/* Matrix Digital Rain */}
+        {/* Matrix Digital Rain - Optimized */}
         <div className="absolute inset-0 overflow-hidden opacity-15">
-          {Array.from({ length: 20 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="absolute top-0 w-px bg-gradient-to-b from-electric-blue/60 via-electric-purple/40 to-transparent"
+              className="absolute top-0 w-px bg-gradient-to-b from-electric-blue/60 via-electric-purple/40 to-transparent animate-digital-rain"
               style={{
-                left: `${Math.random() * 100}%`,
-                height: `${200 + Math.random() * 300}px`,
-                animationName: 'digital-rain',
-                animationDuration: `${3 + Math.random() * 4}s`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationIterationCount: 'infinite',
-                animationTimingFunction: 'linear'
+                left: `${(i + 1) * 12}%`,
+                height: `${250 + (i % 3) * 100}px`,
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${4 + (i % 3)}s`,
               }}
             />
           ))}
@@ -78,17 +85,17 @@ export default function Home() {
         <div className="absolute bottom-1/4 left-3/4 w-96 h-96 bg-electric-emerald/10 rounded-full blur-3xl animate-float-medium"></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-electric-amber/8 rounded-full blur-2xl animate-pulse"></div>
         
-        {/* Particle System */}
+        {/* Particle System - Optimized */}
         <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 30 }).map((_, i) => (
+          {Array.from({ length: 12 }).map((_, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-electric-cyan/60 rounded-full animate-particle-drift"
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${8 + Math.random() * 12}s`,
+                top: `${(i % 4) * 25 + 10}%`,
+                left: `${(i % 3) * 33 + 10}%`,
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${10 + (i % 4) * 2}s`,
                 boxShadow: '0 0 6px currentColor'
               }}
             />
@@ -104,22 +111,11 @@ export default function Home() {
           }}></div>
         </div>
         
-        {/* Scanning Lines */}
+        {/* Scanning Lines - Optimized */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-full h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"
-              style={{
-                top: `${20 + i * 30}%`,
-                animationName: 'scan-line',
-                animationDuration: `${4 + i}s`,
-                animationDelay: `${i * 2}s`,
-                animationIterationCount: 'infinite',
-                animationTimingFunction: 'ease-in-out'
-              }}
-            />
-          ))}
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent animate-scan-line top-1/4"></div>
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-electric-purple to-transparent animate-scan-line top-1/2" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-electric-emerald to-transparent animate-scan-line top-3/4" style={{ animationDelay: '4s' }}></div>
         </div>
         
         {/* Circuit Board Pattern */}
@@ -142,14 +138,7 @@ export default function Home() {
         <div className="space-y-8 animate-fade-in">
           {/* Floating Tech Icons */}
           <div className="flex flex-wrap gap-4 mb-8">
-            {[
-              { icon: Shield, color: 'text-electric-blue', delay: '0s' },
-              { icon: Terminal, color: 'text-electric-purple', delay: '0.2s' },
-              { icon: Bug, color: 'text-electric-emerald', delay: '0.4s' },
-              { icon: Lock, color: 'text-electric-amber', delay: '0.6s' },
-              { icon: Cpu, color: 'text-electric-rose', delay: '0.8s' },
-              { icon: Code, color: 'text-electric-cyan', delay: '1s' },
-            ].map(({ icon: Icon, color, delay }, index) => (
+            {techIcons.map(({ icon: Icon, color, delay }, index) => (
               <div 
                 key={index}
                 className="relative group"
@@ -304,4 +293,4 @@ export default function Home() {
       </a>
     </section>
   );
-}
+});

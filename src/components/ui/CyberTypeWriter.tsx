@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 
 interface CyberTypeWriterProps {
   words: string[];
@@ -7,7 +7,7 @@ interface CyberTypeWriterProps {
   deletingSpeed?: number;
 }
 
-export default function CyberTypeWriter({ 
+export default memo(function CyberTypeWriter({ 
   words, 
   delay = 3000, 
   typingSpeed = 150, 
@@ -112,4 +112,4 @@ export default function CyberTypeWriter({
       </span>
     </div>
   );
-}
+});

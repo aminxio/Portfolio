@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 
 interface TypeWriterProps {
   words: string[];
@@ -7,7 +7,7 @@ interface TypeWriterProps {
   deletingSpeed?: number;
 }
 
-export default function TypeWriter({ 
+export default memo(function TypeWriter({ 
   words, 
   delay = 2000, 
   typingSpeed = 120, 
@@ -79,4 +79,4 @@ export default function TypeWriter({
       </span>
     </div>
   );
-}
+});

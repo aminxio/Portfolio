@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 
 interface ProfessionalTypeWriterProps {
   words: string[];
@@ -7,7 +7,7 @@ interface ProfessionalTypeWriterProps {
   deletingSpeed?: number;
 }
 
-export default function ProfessionalTypeWriter({ 
+export default memo(function ProfessionalTypeWriter({ 
   words, 
   delay = 2000, 
   typingSpeed = 100, 
@@ -79,4 +79,4 @@ export default function ProfessionalTypeWriter({
       </span>
     </div>
   );
-}
+});

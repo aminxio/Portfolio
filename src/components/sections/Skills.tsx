@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useState, memo, useMemo } from 'react';
 import { skillCategories } from '../../data/skills';
 import SkillCategoryButton from '../ui/skills/SkillCategoryButton';
 import SkillDetails from '../ui/skills/SkillDetails';
 import { Shield, Code, Zap, Lock } from 'lucide-react';
 
-export default function Skills() {
+export default memo(function Skills() {
   const [activeCategory, setActiveCategory] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  // Memoize skills array to prevent recreation on every render
+  const skillsArray = useMemo(() => [
+    'Ethical Hacking',
+    'Cloud Security',
+    'AI/ML Security',
+    'DevSecOps',
+    'Incident Response',
+    'Threat Intelligence'
+  ], []);
 
   const handleCategoryChange = (index: number) => {
     if (index === activeCategory) return;
@@ -77,14 +87,7 @@ export default function Skills() {
               Committed to staying ahead of emerging threats and technologies through continuous education and hands-on practice.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {[
-                'Ethical Hacking',
-                'Cloud Security',
-                'AI/ML Security',
-                'DevSecOps',
-                'Incident Response',
-                'Threat Intelligence'
-              ].map((skill, index) => (
+              {skillsArray.map((skill, index) => (
                 <span 
                   key={skill}
                   className="px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue/20 to-electric-purple/20 border border-electric-blue/30 text-electric-blue text-sm font-medium hover:scale-105 transition-transform duration-300"
@@ -99,4 +102,4 @@ export default function Skills() {
       </div>
     </section>
   );
-}
+});
