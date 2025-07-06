@@ -208,7 +208,7 @@ export default memo(function Home() {
               Get In Touch
             </PremiumButton>
             <PremiumButton 
-              href="/Moaaz_Awad_CV.pdf" 
+              href="/Moaaz Awad_CV.pdf" 
               variant="secondary"
               download
               icon={<Eye className="w-5 h-5" />}

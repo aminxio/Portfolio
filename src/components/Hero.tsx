@@ -83,7 +83,7 @@ export default function Hero() {
 
         <div className="flex justify-center space-x-4 mt-8">
           <a
-            href="/Moaaz_Awad_CV.pdf"
+            href="/Moaaz Awad_CV.pdf"
             download
             className="px-6 py-3 bg-green-900/20 border border-green-400/20 text-green-400 rounded-lg hover:bg-green-900/40 transition-all duration-300"
           >
