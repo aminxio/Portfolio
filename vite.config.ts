@@ -38,6 +38,9 @@ export default defineConfig({
     assetsDir: 'assets',
     target: 'esnext',
     cssCodeSplit: true,
+    // Force output as ES modules with proper extensions
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -48,7 +51,9 @@ export default defineConfig({
         // Ensure proper file extensions for GitHub Pages
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+        // Force proper MIME types by ensuring .js extensions
+        format: 'es'
       },
     },
   },
