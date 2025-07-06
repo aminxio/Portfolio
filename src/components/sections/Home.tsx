@@ -1,4 +1,4 @@
-import { Shield, ArrowDown, Terminal, Bug, Lock, Zap, Eye, Cpu, Code, MessageSquare } from 'lucide-react';
+import { Shield, ArrowDown, Bug, Lock, Zap, Eye, Cpu, Code, MessageSquare } from 'lucide-react';
 import ProfessionalTypeWriter from '../ui/ProfessionalTypeWriter';
 import PremiumButton from '../ui/PremiumButton';
 import { useEffect, useState, useMemo, memo } from 'react';
@@ -10,11 +10,10 @@ export default memo(function Home() {
   // Memoize tech icons array to prevent recreation on every render
   const techIcons = useMemo(() => [
     { icon: Shield, color: 'text-electric-blue', delay: '0s' },
-    { icon: Terminal, color: 'text-electric-purple', delay: '0.2s' },
-    { icon: Bug, color: 'text-electric-emerald', delay: '0.4s' },
-    { icon: Lock, color: 'text-electric-amber', delay: '0.6s' },
-    { icon: Cpu, color: 'text-electric-rose', delay: '0.8s' },
-    { icon: Code, color: 'text-electric-cyan', delay: '1s' },
+    { icon: Bug, color: 'text-electric-emerald', delay: '0.2s' },
+    { icon: Lock, color: 'text-electric-amber', delay: '0.4s' },
+    { icon: Cpu, color: 'text-electric-rose', delay: '0.6s' },
+    { icon: Code, color: 'text-electric-cyan', delay: '0.8s' },
   ], []);
 
   useEffect(() => {
