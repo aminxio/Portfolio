@@ -40,6 +40,8 @@ jobs:
           echo "Build completed"
           ls -la dist/
           echo "" > dist/.nojekyll
+          echo "Ensuring .nojekyll file exists"
+          ls -la dist/.nojekyll
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

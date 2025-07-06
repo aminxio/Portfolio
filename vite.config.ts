@@ -2,11 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Hard-coding base to '/' since we're using a custom domain
+// This ensures assets are loaded from the root of amazingmoaaz.online
 const base = '/';
 
 export default defineConfig({
   base,
   plugins: [react()],
+  // Ensure proper module resolution for GitHub Pages
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
+  },
   optimizeDeps: {
     include: ['@emotion/react', '@emotion/styled', 'lucide-react'],
   },
@@ -40,6 +45,10 @@ export default defineConfig({
           icons: ['lucide-react'],
           motion: ['framer-motion'],
         },
+        // Ensure proper file extensions for GitHub Pages
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       },
     },
   },
