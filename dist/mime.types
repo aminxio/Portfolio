@@ -1,0 +1,13 @@
+application/javascript                 js mjs ts tsx
+application/json                     json
+text/css                            css
+text/html                           html htm
+image/x-icon                        ico
+image/png                           png
+image/jpeg                          jpg jpeg
+image/gif                           gif
+image/svg+xml                       svg
+application/font-woff               woff
+application/font-woff2              woff2
+application/x-font-ttf              ttf
+application/vnd.ms-fontobject       eot 
