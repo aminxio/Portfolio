@@ -89,7 +89,7 @@ export default memo(function Navbar() {
             </div>
             <div className="relative">
               <span className="font-cyber font-bold text-xl gradient-text">
-                AmazingMoaaz
+                AminXio
               </span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-electric-blue to-electric-purple group-hover:w-full transition-all duration-500"></div>
             </div>

@@ -157,10 +157,10 @@ export default memo(function Home() {
           <div className="space-y-4">
             <h1 className="heading-primary text-5xl md:text-7xl lg:text-8xl">
               <span className="block gradient-text">
-                MOAAZ
+                AMINE
               </span>
               <span className="block gradient-text" style={{ animationDelay: '0.5s' }}>
-                AWAD
+                OUAGI
               </span>
             </h1>
             
@@ -170,6 +170,7 @@ export default memo(function Home() {
                 words={[
                   "Junior Penetration Tester",
                   "Bug Hunter",
+                  "Red Teamer",
                 ]} 
               />
             </div>
@@ -208,7 +209,7 @@ export default memo(function Home() {
               Get In Touch
             </PremiumButton>
             <PremiumButton 
-              href="/Moaaz Awad_CV.pdf" 
+              href="/Amine_Ouagi_Pentester _resume-4.pdf" 
               variant="secondary"
               download
               icon={<Eye className="w-5 h-5" />}
@@ -236,8 +237,8 @@ export default memo(function Home() {
               {/* Avatar Container */}
               <div className="absolute inset-4 rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-500">
                 <img
-                  src="https://avatars.githubusercontent.com/u/123095573?v=4"
-                  alt="Moaaz Awad - Cybersecurity Professional"
+                  src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757950409666/5551687a-07e3-4805-985f-6f3e43b58c00.png?w=400&h=400&fit=crop&crop=faces&w=500&h=500&fit=crop&crop=entropy&auto=compress,format&format=webp&auto=compress,format&format=webp"
+                  alt="Amine Ouagi - Cybersecurity Professional"
                   className="w-full h-full object-cover"
                 />
                 

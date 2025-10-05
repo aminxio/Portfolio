@@ -1,42 +1,43 @@
 export const certifications = [
   {
     id: 1,
-    name: "Certified Ethical Hacker (CEH)",
-    issuer: "EC-Council",
-    date: "2023",
-    url: "#",
+    name: "Certified Red Team Analyst (CRTA)",
+    issuer: "CyberWarFare",
+    date: "2025",
+    url: "https://labs.cyberwarfare.live/credential/achievement/68d48776e01c42ea0885577e",
     status: "completed"
   },
   {
     id: 2,
-    name: "CompTIA Security+",
-    issuer: "CompTIA",
-    date: "2023",
-    url: "#",
+    name: "Advanced Bug Bounty Secrets",
+    issuer: "RedNexus",
+    date: "2025",
+    url: "https://www.udemy.com/certificate/UC-c24f5a21-7bb9-4ad6-9413-db18cdcb3792/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
     status: "completed"
   },
   {
     id: 3,
-    name: "AWS Security Specialty",
-    issuer: "Amazon Web Services",
-    date: "2023",
-    url: "#",
+    name: "Red Teaming, Ethical Hacking",
+    issuer: "RedNexus",
+    date: "2025",
+    url: "https://www.udemy.com/certificate/UC-37d0607e-da91-4fd3-bd5d-9b9a877f1434/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
     status: "completed"
   },
+  
   {
     id: 4,
     name: "OSCP (Offensive Security Certified Professional)",
     issuer: "Offensive Security",
     status: "in-progress",
     progress: 65,
-    expectedCompletion: "2024"
+    expectedCompletion: "2026"
   },
   {
     id: 5,
-    name: "Cloud Security Engineer",
-    issuer: "Google Cloud",
+    name: "Certified Red Team Professional",
+    issuer: "altered security.",
     status: "in-progress",
     progress: 40,
-    expectedCompletion: "2024"
+    expectedCompletion: "2026"
   }
 ];

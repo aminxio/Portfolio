@@ -47,10 +47,10 @@ export default memo(function About() {
                     Education
                   </h3>
                   <p className="text-lg font-semibold text-slate-200 mb-1">
-                    Bachelor's in Artificial Intelligence
+                    Bachelor's in Solar Energy
                   </p>
                   <p className="text-slate-400">
-                    Delta University • Currently Enrolled
+                    Ifmeree • Completed
                   </p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default memo(function About() {
                     Vulnerability Analysis / Penetration Testing
                   </p>
                   <p className="text-slate-400">
-                    Digital Egypt Pioneers Initiative • Completed
+                    Red Nexus • Completed
                   </p>
                 </div>
               </div>
@@ -114,25 +114,18 @@ export default memo(function About() {
               
               <div className="space-y-4 text-slate-300 leading-relaxed">
                 <p>
-                  Passionate cybersecurity professional with a strong foundation in 
-                  <span className="text-electric-blue font-semibold"> artificial intelligence</span> and 
-                  <span className="text-electric-purple font-semibold"> ethical hacking</span>. 
-                  Currently pursuing advanced studies while gaining hands-on experience in 
-                  vulnerability assessment and penetration testing.
+                  Cybersecurity professional transitioning into full-time 
+                  <span className="text-electric-blue font-semibold"> bug bounty hunting</span> and 
+                  <span className="text-electric-purple font-semibold"> security research</span>. 
+                  I specialize in web application penetration testing, Active Directory exploitation, and cloud security, with a proven track record of finding and weaponizing vulnerabilities in real-world environments
+                  .
                 </p>
                 
                 <p>
-                  My mission is to bridge the gap between AI innovation and cybersecurity, 
-                  creating intelligent defense systems that can adapt to emerging threats. 
-                  I believe in the power of continuous learning and ethical practices to 
-                  build a safer digital future.
+                  My mission is simple: find flaws before the bad actors do. I thrive on the challenge of breaking into systems, not for malice, but to build stronger defenses. Every vulnerability I discover and report is a step toward a more secure digital world.
                 </p>
                 
-                <p>
-                  Specializing in web application security, network penetration testing, 
-                  and AI-driven security solutions. Always eager to tackle new challenges 
-                  and contribute to the cybersecurity community.
-                </p>
+                
               </div>
             </div>
 

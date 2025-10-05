@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub, FaTwitter, FaDiscord, FaFacebook } from 'react-ic
 const socialLinks = [
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/gewili-moaaz',
+    url: 'https://www.linkedin.com/in/amin-ouagi/',
     icon: FaLinkedin,
     color: 'text-electric-blue',
     hoverColor: 'hover:text-electric-cyan',
@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/AmazingMoaaz',
+    url: '',
     icon: FaGithub,
     color: 'text-electric-purple',
     hoverColor: 'hover:text-electric-cyan',
@@ -23,7 +23,7 @@ const socialLinks = [
   },
   {
     name: 'Discord',
-    url: 'https://discord.com/users/amazing_moaaz',
+    url: 'https://discord.com/users/x_d5230',
     icon: FaDiscord,
     color: 'text-electric-emerald',
     hoverColor: 'hover:text-electric-cyan',
@@ -33,7 +33,7 @@ const socialLinks = [
   },
   {
     name: 'Facebook',
-    url: 'https://www.facebook.com/Amazing.Moaaz',
+    url: '',
     icon: FaFacebook,
     color: 'text-electric-amber',
     hoverColor: 'hover:text-electric-cyan',
@@ -43,7 +43,7 @@ const socialLinks = [
   },
   {
     name: 'Twitter',
-    url: 'https://x.com/M_0_A_Z',
+    url: 'https://x.com/ougi_xd',
     icon: FaTwitter,
     color: 'text-electric-cyan',
     hoverColor: 'hover:text-electric-blue',

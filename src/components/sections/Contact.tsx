@@ -81,10 +81,10 @@ export default function Contact() {
                     <div className="flex-1">
                       <p className="text-slate-400 text-sm">Email</p>
                       <a 
-                        href="mailto:contact@amazingmoaaz.online" 
+                        href="mailto:aminouji23@gmail.com" 
                         className="text-electric-purple hover:text-electric-cyan transition-colors duration-300 font-semibold"
                       >
-                        contact@amazingmoaaz.online
+                        aminouji23@gmail.com
                       </a>
                     </div>
                   </div>
@@ -99,10 +99,10 @@ export default function Contact() {
                     <div className="flex-1">
                       <p className="text-slate-400 text-sm">Phone</p>
                       <a 
-                        href="tel:+201554981750" 
+                        href="tel:+212645139402" 
                         className="text-electric-blue hover:text-electric-cyan transition-colors duration-300 font-semibold"
                       >
-                        +201554981750
+                        +212645139402
                       </a>
                     </div>
                   </div>
@@ -117,7 +117,7 @@ export default function Contact() {
                     <div className="flex-1">
                       <p className="text-slate-400 text-sm">Location</p>
                       <span className="text-electric-emerald font-semibold">
-                        Talkha, Ad Daqahliyah, Egypt
+                        Fes,Morocco
                       </span>
                     </div>
                   </div>
@@ -174,14 +174,14 @@ export default function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="mailto:contact@amazingmoaaz.online"
+                href="mailto:aminouji23@gmail.com"
                 className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl glass-effect border border-electric-blue/30 text-electric-blue hover:text-electric-cyan transition-colors duration-300 group text-sm"
               >
                 <Mail className="w-4 h-4" />
                 <span className="font-semibold">Email Me</span>
               </a>
               <a
-                href="tel:+201554981750"
+                href="tel:+212645139402"
                 className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl glass-effect border border-electric-purple/30 text-electric-purple hover:text-electric-cyan transition-colors duration-300 group text-sm"
               >
                 <Phone className="w-4 h-4" />

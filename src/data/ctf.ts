@@ -20,7 +20,7 @@ export const recentChallenges: CTFChallenge[] = [
     platform: 'HackTheBox',
     category: 'Web',
     difficulty: 'Medium',
-    points: 40,
+    points: 4,
     solvedAt: '2024-03-15',
     writeupUrl: '#',
   },

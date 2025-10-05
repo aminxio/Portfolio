@@ -18,7 +18,7 @@ export const latestCTF: LatestCTF = {
 };
 
 export const ctfStats: CTFStats = {
-  totalSolved: 45,
+  totalSolved: 23,
   totalPoints: 12500,
   successRate: 75,
   favoriteCategory: "Web"

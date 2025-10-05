@@ -15,10 +15,6 @@ export const skillCategories: SkillCategory[] = [
         description: 'Comprehensive network security assessment using Nmap, Wireshark, Metasploit, and custom scripts. Experience with internal and external network testing.'
       },
       { 
-        name: 'Mobile Application Security',
-        description: 'Android and iOS security assessment including static/dynamic analysis, reverse engineering, and runtime manipulation using Frida, MobSF, and custom tools.'
-      },
-      { 
         name: 'API Security Testing',
         description: 'REST/GraphQL API security assessment, authentication bypass, authorization flaws, and rate limiting vulnerabilities using specialized tools and methodologies.'
       },
