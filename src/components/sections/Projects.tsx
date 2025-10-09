@@ -1,5 +1,5 @@
 import ProjectCard from '../ui/ProjectCard';
-import { projects } from '../../data/projects';
+import { projects } from '../../data/projects-data';
 import { Code, Globe, Terminal, Cpu, Shield, Eye, Layers } from 'lucide-react';
 
 export default function Projects() {
