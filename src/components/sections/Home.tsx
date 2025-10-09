@@ -209,7 +209,7 @@ export default memo(function Home() {
               Get In Touch
             </PremiumButton>
             <PremiumButton 
-              href="/Amine_Ouagi_Pentester _resume-4.pdf" 
+              href="https://github.com/aminxio/Portfolio/blob/main/dist/Amine_Ouagi_Pentester%20_resume-4.pdf" 
               variant="secondary"
               download
               icon={<Eye className="w-5 h-5" />}

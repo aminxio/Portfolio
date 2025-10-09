@@ -86,7 +86,7 @@ export default function Projects() {
               Check out my GitHub for additional projects, contributions, and open-source work in cybersecurity.
             </p>
             <a
-              href="https://github.com"
+              href="https://github.com/aminxio"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl glass-effect border border-electric-blue/30 text-electric-blue hover:text-electric-cyan transition-colors duration-300 group"
