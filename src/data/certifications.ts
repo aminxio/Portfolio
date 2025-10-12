@@ -35,9 +35,9 @@ export const certifications = [
   {
     id: 5,
     name: "Certified Red Team Professional",
-    issuer: "altered security.",
+    issuer: "altered security",
     status: "in-progress",
-    progress: 40,
+    progress: 80,
     expectedCompletion: "2026"
   }
 ];

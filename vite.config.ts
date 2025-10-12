@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Correction pour GitHub Pages
-const base = '/Portfolio/';
 
-export default defineConfig({
-  base,
+
+export default defineConfig(({ command }) => ({
+  base: command === 'serve' ? '/' : '/Portfolio/',
   plugins: [react()],
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
@@ -41,4 +40,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

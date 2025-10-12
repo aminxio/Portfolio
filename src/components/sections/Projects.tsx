@@ -1,9 +1,14 @@
 import ProjectCard from '../ui/ProjectCard';
-import { projects } from '../../data/projects-data';
+import { projectsList } from '../../data/projects-data.ts';
 import { Code, Globe, Terminal, Cpu, Shield, Eye, Layers } from 'lucide-react';
 
+
+
 export default function Projects() {
+
+
   return (
+    
     <section id="projects" className="relative section-padding grid-bg">
       {/* Floating Tech Icons Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -60,7 +65,7 @@ export default function Projects() {
 
         {/* Enhanced Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {projects.map((project, index) => (
+          {projectsList.map((project, index) => (
             <div
               key={project.id}
               className="animate-slide-up"

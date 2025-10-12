@@ -1,4 +1,4 @@
-export const projects = [
+export const projectsList = [
   {
     id: 1,
     title: "RedKONX - Offensive Reconnaissance Toolkit",
